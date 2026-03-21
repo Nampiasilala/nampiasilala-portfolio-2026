@@ -1,184 +1,214 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import Modal from "./Modal";
 
 interface Project {
   titre: string;
   description: string;
+  longDescription?: string;
   technologies: string[];
+  features?: string[];
+  role?: string;
+  year?: string;
   image: string;
   github: string;
   demo: string;
 }
 
 export default function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   const projets: Project[] = [
     {
       titre: "App Mobile Timer",
       description:
-        "Application mobile de gestion de temps avec minuteries personnalisées, notifications intelligentes et suivi de productivité.",
-      technologies: ["Flutter", "Dart", "Firebase", "SQLite"],
+        "Application mobile de gestion de temps avec minuteries personnalisées.",
+      longDescription:
+        "Application mobile complète permettant de gérer son temps avec des minuteries personnalisées, notifications intelligentes et suivi de productivité.",
+      technologies: ["JavaScript", "React Native", "Expo"],
+      features: [
+        "Minuteurs personnalisés",
+        "Notifications intelligentes",
+        "Statistiques de productivité",
+      ],
+      role: "Mobile Developer",
+      year: "2024",
       image:
         "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop",
-      github: "https://github.com/username/app-mobile-timer",
-      demo: "https://expo.dev/@username/timer-app",
+      github: "https://github.com/Nampiasilala/app-mobile-timer.git",
+      demo: "#",
     },
-    {
-      titre: "Figma Timer UI",
-      description:
-        "Prototype UI/UX d'une application de minuterie moderne conçu sur Figma avec design system complet.",
-      technologies: ["Figma", "Design System", "Prototyping"],
-      image:
-        "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=600&h=400&fit=crop",
-      github: "https://github.com/username/figma-timer",
-      demo: "https://figma.com/file/timer-ui",
-    },
+
     {
       titre: "Site de Naissance",
       description:
-        "Plateforme web permettant de générer automatiquement des pages de naissance personnalisées avec galerie et partage.",
-      technologies: ["Next.js", "TailwindCSS", "MongoDB", "Node.js"],
+        "Plateforme web permettant de générer automatiquement des pages de naissance.",
+      longDescription:
+        "Application web permettant aux utilisateurs de créer des pages personnalisées pour des naissances avec galerie, partage et design moderne.",
+      technologies: ["JavaScript", "CSS", "HTML"],
+      features: [
+        "Création automatique de pages",
+        "Galerie d’images",
+        "Partage en ligne",
+      ],
+      role: "Frontend Developer",
+      year: "2024",
       image:
         "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop",
-      github: "https://github.com/username/site-de-naissance",
-      demo: "https://naissance-app.vercel.app",
+      github: "https://github.com/Nampiasilala/site-de-naissance",
+      demo: "#",
     },
+
     {
-      titre: "Gestion Facturation",
+      titre: "Suivi et Gestion du Flux Financier",
       description:
-        "Application SaaS de gestion de factures avec génération PDF, suivi des paiements et dashboard financier.",
-      technologies: ["React", "Node.js", "Express", "PostgreSQL"],
-      image:
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-      github: "https://github.com/username/gestion-facturation",
-      demo: "https://facturation-app.vercel.app",
-    },
-    {
-      titre: "App Météo",
-      description:
-        "Application météo avec prévisions sur 7 jours, géolocalisation et affichage dynamique.",
-      technologies: ["React Native", "Expo", "OpenWeather API"],
-      image:
-        "https://images.unsplash.com/photo-1501973801540-537f08ccae7b?w=600&h=400&fit=crop",
-      github: "https://github.com/username/app-meteo",
-      demo: "https://expo.dev/@username/meteo-app",
-    },
-    {
-      titre: "Suivi Flux Financier",
-      description:
-        "Outil de suivi des finances personnelles avec graphiques, catégorisation et analyse.",
-      technologies: ["Vue.js", "Chart.js", "Firebase"],
+        "Outil de suivi des finances personnelles avec graphiques.",
+      longDescription:
+        "Application permettant de suivre les dépenses, catégoriser les transactions et visualiser les finances via des graphiques.",
+      technologies: ["JavaScript", "PHP", "MySQL"],
+      features: [
+        "Gestion des dépenses",
+        "Graphiques financiers",
+        "Analyse des flux",
+      ],
+      role: "Fullstack Developer",
+      year: "2024",
       image:
         "https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&h=400&fit=crop",
-      github: "https://github.com/username/flux-financier",
-      demo: "https://finance-tracker.vercel.app",
+      github: "https://github.com/Nampiasilala/flux_financier_back.git",
+      demo: "#",
     },
+
     {
       titre: "Projet Blackjack",
       description:
-        "Jeu de Blackjack interactif avec gestion des scores et logique complète du jeu.",
-      technologies: ["JavaScript", "HTML", "CSS"],
+        "Jeu de Blackjack interactif avec logique complète.",
+      longDescription:
+        "Implémentation complète du jeu Blackjack avec gestion des scores, logique de jeu et interface interactive.",
+      technologies: ["JavaScript", "Java", "Spring Boot"],
+      features: [
+        "Logique complète du jeu",
+        "Gestion des scores",
+        "Interface interactive",
+      ],
+      role: "Backend & Logic Developer",
+      year: "2023",
       image:
         "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=600&h=400&fit=crop",
-      github: "https://github.com/username/projet-blackjack",
-      demo: "https://blackjack-game.vercel.app",
+      github: "https://github.com/Nampiasilala/projet_blackjack.git",
+      demo: "#",
     },
+
     {
-      titre: "Dépôt Debian Privé",
+      titre: "Outils Photovoltaïque",
       description:
-        "Infrastructure pour héberger et gérer des paquets Debian privés avec CI/CD.",
-      technologies: ["Linux", "Docker", "Bash", "GitHub Actions"],
-      image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
-      github: "https://github.com/username/depot-debian",
-      demo: "https://debian-repo-docs.vercel.app",
-    },
-    {
-      titre: "App Photovoltaïque",
-      description:
-        "Application mobile pour calculer et simuler la production d’énergie solaire.",
-      technologies: ["Flutter", "Firebase", "REST API"],
+        "Application pour simuler la production d’énergie solaire.",
+      longDescription:
+        "Application permettant de calculer et simuler la production d’énergie solaire en fonction des paramètres environnementaux.",
+      technologies: ["Python", "Typescript", "JavaScript"],
+      features: [
+        "Simulation énergétique",
+        "Calculs dynamiques",
+        "Interface utilisateur",
+      ],
+      role: "Developer",
+      year: "2024",
       image:
         "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop",
-      github: "https://github.com/username/app-photovoltaique",
-      demo: "https://expo.dev/@username/solar-app",
+      github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
+      demo: "#",
     },
+
     {
-      titre: "Flutter Multi-App",
+      titre: "Outils Photovoltaïques Mobile",
       description:
-        "Application démonstration Flutter avec architecture propre et gestion d’état avancée.",
-      technologies: ["Flutter", "Dart", "Bloc"],
+        "Application Flutter avec architecture propre.",
+      longDescription:
+        "Application mobile Flutter démontrant une architecture propre et une gestion d’état avancée.",
+      technologies: ["Flutter", "Dart"],
+      features: [
+        "Architecture propre",
+        "Gestion d’état",
+        "Performance optimisée",
+      ],
+      role: "Mobile Developer",
+      year: "2024",
       image:
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-      github: "https://github.com/username/flutter-app",
-      demo: "https://expo.dev/@username/flutter-demo",
+      github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
+      demo: "#",
     },
-    {
-      titre: "Outils Photovoltaïques",
-      description:
-        "Suite d’outils web pour dimensionnement et calcul de systèmes solaires.",
-      technologies: ["Next.js", "TypeScript", "TailwindCSS"],
-      image:
-        "https://images.unsplash.com/photo-1497436072909-f5e4be6c9d70?w=600&h=400&fit=crop",
-      github: "https://github.com/username/outils-pv",
-      demo: "https://pv-tools.vercel.app",
-    },
+
     {
       titre: "Alumni Géolocalisation",
       description:
-        "Plateforme pour localiser les anciens étudiants avec carte interactive.",
-      technologies: ["React", "Leaflet", "Node.js", "MongoDB"],
-      image:
-        "https://images.unsplash.com/photo-1502920917128-1aa500764ce7?w=600&h=400&fit=crop",
-      github: "https://github.com/username/alumni-geolocalisation",
-      demo: "https://alumni-map.vercel.app",
+        "Plateforme pour localiser les anciens étudiants.",
+      longDescription:
+        "Application web complète avec carte interactive permettant de localiser et filtrer les anciens étudiants avec une interface moderne.",
+      technologies: [
+        "Next.js",
+        "Leaflet",
+        "OpenStreetMap",
+        "Node.js",
+        "NestJS",
+        "Typescript",
+      ],
+      features: [
+        "Carte interactive",
+        "Recherche avancée",
+        "API REST",
+      ],
+      role: "Fullstack Developer",
+      year: "2025",
+      image: "/images/figma-localisation-geographique.png",
+      github: "https://github.com/Nampiasilala/alumni-geolocalisation",
+      demo: "#",
     },
   ];
 
   return (
     <section id="projets" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
+
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Mes Projets
-          </h2>
-          <p className="text-lg text-gray-600">
+          <h2 className="text-4xl font-bold mb-4">Mes Projets</h2>
+          <p className="text-gray-600">
             Une sélection de mes réalisations web et mobile
           </p>
         </motion.div>
 
+        {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projets.map((projet, index) => (
             <motion.div
               key={projet.titre}
+              onClick={() => setSelectedProject(projet)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group"
+              className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group"
             >
-              <div className="overflow-hidden">
-                <img
-                  src={projet.image}
-                  alt={projet.titre}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition duration-300"
-                />
-              </div>
+              <img
+                src={projet.image}
+                className="w-full h-48 object-cover group-hover:scale-110 transition"
+              />
 
               <div className="p-5">
-                <h3 className="text-xl font-semibold mb-2">
+                <h3 className="text-xl font-semibold">
                   {projet.titre}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+
+                <p className="text-gray-600 text-sm mt-2">
                   {projet.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mt-3">
                   {projet.technologies.map((tech) => (
                     <span
                       key={tech}
@@ -188,31 +218,59 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-
-                <div className="flex gap-4">
-                  <a
-                    href={projet.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-sm hover:text-blue-600"
-                  >
-                    <Github size={16} className="mr-1" /> Code
-                  </a>
-
-                  <a
-                    href={projet.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-sm hover:text-blue-600"
-                  >
-                    <ExternalLink size={16} className="mr-1" /> Demo
-                  </a>
-                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* MODAL */}
+      {selectedProject && (
+        <Modal onClose={() => setSelectedProject(null)}>
+          <img
+            src={selectedProject.image}
+            className="w-full h-60 object-cover rounded mb-4"
+          />
+
+          <h2 className="text-2xl font-bold">
+            {selectedProject.titre}
+          </h2>
+
+          <p className="text-gray-500 mb-2">
+            {selectedProject.role} • {selectedProject.year}
+          </p>
+
+          <p className="text-gray-600 mb-4">
+            {selectedProject.longDescription}
+          </p>
+
+          <ul className="list-disc list-inside mb-4 text-gray-600">
+            {selectedProject.features?.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-2 mb-4">
+            {selectedProject.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="bg-gray-100 px-2 py-1 rounded"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-4">
+            <a href={selectedProject.github} target="_blank">
+              <Github /> Code
+            </a>
+            <a href={selectedProject.demo} target="_blank">
+              <ExternalLink /> Demo
+            </a>
+          </div>
+        </Modal>
+      )}
     </section>
   );
 }
