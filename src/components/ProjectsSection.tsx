@@ -34,8 +34,7 @@ export default function ProjectsSection() {
       ],
       role: "Mobile Developer",
       year: "2024",
-      image:
-        "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop",
+      image: "/images/1.png",
       github: "https://github.com/Nampiasilala/app-mobile-timer.git",
       demo: "#",
     },
@@ -54,8 +53,7 @@ export default function ProjectsSection() {
       ],
       role: "Frontend Developer",
       year: "2024",
-      image:
-        "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop",
+      image: "/images/2.png",
       github: "https://github.com/Nampiasilala/site-de-naissance",
       demo: "#",
     },
@@ -66,7 +64,7 @@ export default function ProjectsSection() {
         "Outil de suivi des finances personnelles avec graphiques.",
       longDescription:
         "Application permettant de suivre les dépenses, catégoriser les transactions et visualiser les finances via des graphiques.",
-      technologies: ["JavaScript", "PHP", "MySQL"],
+      technologies: ["React", "JavaScript", "PHP", "MySQL"],
       features: [
         "Gestion des dépenses",
         "Graphiques financiers",
@@ -74,8 +72,7 @@ export default function ProjectsSection() {
       ],
       role: "Fullstack Developer",
       year: "2024",
-      image:
-        "https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&h=400&fit=crop",
+      image: "/images/3.png",
       github: "https://github.com/Nampiasilala/flux_financier_back.git",
       demo: "#",
     },
@@ -86,7 +83,7 @@ export default function ProjectsSection() {
         "Jeu de Blackjack interactif avec logique complète.",
       longDescription:
         "Implémentation complète du jeu Blackjack avec gestion des scores, logique de jeu et interface interactive.",
-      technologies: ["JavaScript", "Java", "Spring Boot"],
+      technologies: ["React", "JavaScript", "Java", "Spring Boot", "MySQL"],
       features: [
         "Logique complète du jeu",
         "Gestion des scores",
@@ -94,8 +91,7 @@ export default function ProjectsSection() {
       ],
       role: "Backend & Logic Developer",
       year: "2023",
-      image:
-        "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=600&h=400&fit=crop",
+      image: "/images/4.png",
       github: "https://github.com/Nampiasilala/projet_blackjack.git",
       demo: "#",
     },
@@ -106,7 +102,7 @@ export default function ProjectsSection() {
         "Application pour simuler la production d’énergie solaire.",
       longDescription:
         "Application permettant de calculer et simuler la production d’énergie solaire en fonction des paramètres environnementaux.",
-      technologies: ["Python", "Typescript", "JavaScript"],
+      technologies: ["Next.js","TypeScript", "Tailwindcss", "Django", "PostgreSQL", "ngrok", "Postman", "OpenStreetMap", "Docker", "DockerHub", "Git", "GitHub"],
       features: [
         "Simulation énergétique",
         "Calculs dynamiques",
@@ -114,8 +110,7 @@ export default function ProjectsSection() {
       ],
       role: "Developer",
       year: "2024",
-      image:
-        "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop",
+      image: "/images/5.png",
       github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
       demo: "#",
     },
@@ -147,12 +142,12 @@ export default function ProjectsSection() {
       longDescription:
         "Application web complète avec carte interactive permettant de localiser et filtrer les anciens étudiants avec une interface moderne.",
       technologies: [
-        "Next.js",
-        "Leaflet",
-        "OpenStreetMap",
-        "Node.js",
-        "NestJS",
+        "Next.js + Leaflet + OpenStreetMap + WebSockets",
+        "Socket.IO + Node.js + NestJS",
         "Typescript",
+        "PostgreSQL 16 + PostGIS",
+        "Docker + Docker Compose",
+        "Position WiFi/IP - GPS - recherche par ville",
       ],
       features: [
         "Carte interactive",
