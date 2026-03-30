@@ -20,7 +20,7 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
             animate={{ opacity: 1 }}
             className="font-bold text-xl text-gray-900"
           >
-            Nampiasilala
+            Portfolio DEV
           </motion.div>
 
           <div className="hidden md:flex space-x-8">

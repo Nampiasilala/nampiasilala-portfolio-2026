@@ -38,7 +38,6 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/app-mobile-timer.git",
       demo: "#",
     },
-
     {
       titre: "Site de Naissance",
       description:
@@ -48,7 +47,7 @@ export default function ProjectsSection() {
       technologies: ["JavaScript", "CSS", "HTML"],
       features: [
         "Création automatique de pages",
-        "Galerie d’images",
+        "Galerie d'images",
         "Partage en ligne",
       ],
       role: "Frontend Developer",
@@ -57,9 +56,8 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/site-de-naissance",
       demo: "#",
     },
-
     {
-      titre: "Suivi et Gestion du Flux Financier",
+      titre: "Suivi Flux Financier",
       description:
         "Outil de suivi des finances personnelles avec graphiques.",
       longDescription:
@@ -76,7 +74,6 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/flux_financier_back.git",
       demo: "#",
     },
-
     {
       titre: "Projet Blackjack",
       description:
@@ -95,18 +92,25 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/projet_blackjack.git",
       demo: "#",
     },
-
     {
       titre: "Outils Photovoltaïque",
       description:
-        "Application pour simuler la production d’énergie solaire.",
+        "Application pour simuler la production d'énergie solaire.",
       longDescription:
-        "Application permettant de calculer et simuler la production d’énergie solaire en fonction des paramètres environnementaux.",
-      technologies: ["Next.js","TypeScript", "Tailwindcss", "Django", "PostgreSQL", "ngrok", "Postman", "OpenStreetMap", "Docker", "DockerHub", "Git", "GitHub"],
+        "Application permettant de calculer et simuler la production d'énergie solaire en fonction des paramètres environnementaux.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "OpenStreetMap",
+      ],
       features: [
         "Simulation énergétique",
         "Calculs dynamiques",
-        "Interface utilisateur",
+        "Interface cartographique",
       ],
       role: "Developer",
       year: "2024",
@@ -114,17 +118,16 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
       demo: "#",
     },
-
     {
-      titre: "Outils Photovoltaïques Mobile",
+      titre: "Outils PV Mobile",
       description:
         "Application Flutter avec architecture propre.",
       longDescription:
-        "Application mobile Flutter démontrant une architecture propre et une gestion d’état avancée.",
+        "Application mobile Flutter démontrant une architecture propre et une gestion d'état avancée.",
       technologies: ["Flutter", "Dart"],
       features: [
         "Architecture propre",
-        "Gestion d’état",
+        "Gestion d'état",
         "Performance optimisée",
       ],
       role: "Mobile Developer",
@@ -134,25 +137,25 @@ export default function ProjectsSection() {
       github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
       demo: "#",
     },
-
     {
       titre: "Alumni Géolocalisation",
       description:
-        "Plateforme pour localiser les anciens étudiants.",
+        "Plateforme pour localiser les anciens étudiants via une carte interactive.",
       longDescription:
         "Application web complète avec carte interactive permettant de localiser et filtrer les anciens étudiants avec une interface moderne.",
       technologies: [
-        "Next.js + Leaflet + OpenStreetMap + WebSockets",
-        "Socket.IO + Node.js + NestJS",
-        "Typescript",
-        "PostgreSQL 16 + PostGIS",
-        "Docker + Docker Compose",
-        "Position WiFi/IP - GPS - recherche par ville",
+        "Next.js",
+        "Leaflet",
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL + PostGIS",
+        "Docker",
+        "WebSockets",
       ],
       features: [
         "Carte interactive",
         "Recherche avancée",
-        "API REST",
+        "Géolocalisation GPS/WiFi",
       ],
       role: "Fullstack Developer",
       year: "2025",
@@ -164,7 +167,7 @@ export default function ProjectsSection() {
 
   return (
     <section id="projets" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -172,46 +175,64 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Mes Projets</h2>
-          <p className="text-gray-600">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Mes Projets</h2>
+          <p className="text-gray-500 text-sm sm:text-base">
             Une sélection de mes réalisations web et mobile
           </p>
         </motion.div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projets.map((projet, index) => (
             <motion.div
               key={projet.titre}
               onClick={() => setSelectedProject(projet)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group"
+              transition={{ delay: index * 0.08 }}
+              className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group flex flex-col"
             >
-              <img
-                src={projet.image}
-                className="w-full h-48 object-cover group-hover:scale-110 transition"
-              />
+              {/* Image */}
+              <div className="overflow-hidden h-44">
+                <img
+                  src={projet.image}
+                  alt={projet.titre}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
 
-              <div className="p-5">
-                <h3 className="text-xl font-semibold">
-                  {projet.titre}
-                </h3>
+              <div className="p-4 flex flex-col flex-1">
+                {/* Badge année */}
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-base font-semibold text-gray-900 leading-tight">
+                    {projet.titre}
+                  </h3>
+                  {projet.year && (
+                    <span className="text-xs text-gray-400 ml-2 shrink-0">
+                      {projet.year}
+                    </span>
+                  )}
+                </div>
 
-                <p className="text-gray-600 text-sm mt-2">
+                <p className="text-gray-500 text-sm leading-relaxed mb-3 flex-1">
                   {projet.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {projet.technologies.map((tech) => (
+                {/* Technologies — max 3 affichées */}
+                <div className="flex flex-wrap gap-1.5 mt-auto">
+                  {projet.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs bg-gray-100 px-2 py-1 rounded"
+                      className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"
                     >
                       {tech}
                     </span>
                   ))}
+                  {projet.technologies.length > 3 && (
+                    <span className="text-xs text-gray-400 px-1 py-0.5">
+                      +{projet.technologies.length - 3}
+                    </span>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -222,47 +243,76 @@ export default function ProjectsSection() {
       {/* MODAL */}
       {selectedProject && (
         <Modal onClose={() => setSelectedProject(null)}>
-          <img
-            src={selectedProject.image}
-            className="w-full h-60 object-cover rounded mb-4"
-          />
+          {/* Image */}
+          <div className="overflow-hidden rounded-xl mb-5 -mx-5 sm:mx-0 -mt-1">
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.titre}
+              className="w-full h-52 sm:h-60 object-cover"
+            />
+          </div>
 
-          <h2 className="text-2xl font-bold">
-            {selectedProject.titre}
-          </h2>
+          {/* En-tête */}
+          <div className="mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+              {selectedProject.titre}
+            </h2>
+            <p className="text-sm text-gray-400 mt-1">
+              {selectedProject.role} · {selectedProject.year}
+            </p>
+          </div>
 
-          <p className="text-gray-500 mb-2">
-            {selectedProject.role} • {selectedProject.year}
-          </p>
-
-          <p className="text-gray-600 mb-4">
+          {/* Description */}
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
             {selectedProject.longDescription}
           </p>
 
-          <ul className="list-disc list-inside mb-4 text-gray-600">
-            {selectedProject.features?.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
+          {/* Features */}
+          {selectedProject.features && selectedProject.features.length > 0 && (
+            <ul className="space-y-1.5 mb-5">
+              {selectedProject.features.map((f) => (
+                <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+                  <span className="mt-0.5 text-green-500">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          )}
 
-          <div className="flex flex-wrap gap-2 mb-4">
+          {/* Technologies */}
+          <div className="flex flex-wrap gap-2 mb-6">
             {selectedProject.technologies.map((tech) => (
               <span
                 key={tech}
-                className="bg-gray-100 px-2 py-1 rounded"
+                className="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex gap-4">
-            <a href={selectedProject.github} target="_blank">
-              <Github /> Code
+          {/* Liens */}
+          <div className="flex gap-3 pt-4 border-t border-gray-100">
+            <a
+              href={selectedProject.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition"
+            >
+              <Github size={15} />
+              Code
             </a>
-            <a href={selectedProject.demo} target="_blank">
-              <ExternalLink /> Demo
-            </a>
+            {selectedProject.demo !== "#" && (
+              <a
+                href={selectedProject.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-50 transition"
+              >
+                <ExternalLink size={15} />
+                Démo
+              </a>
+            )}
           </div>
         </Modal>
       )}
