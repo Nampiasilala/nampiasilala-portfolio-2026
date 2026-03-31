@@ -18,23 +18,22 @@ export default function SkillsSection() {
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
-        "Framer Motion",
       ],
     },
     {
       categorie: "Backend",
       icon: <Palette className="w-6 h-6" />,
-      technologies: ["Node.js", "Express", "Python", "PostgreSQL", "Prisma"],
+      technologies: ["Node.js", "Express", "Python", "PostgreSQL", "NestJS", "Java", "Spring Boot", "PHP", "Laravel", "Django"],
     },
     {
       categorie: "Mobile & Cloud",
       icon: <Smartphone className="w-6 h-6" />,
-      technologies: ["React Native", "Firebase", "Vercel"],
+      technologies: ["React Native", "Flutter", "Dart"],
     },
     {
       categorie: "DevOps & Outils",
       icon: <Server className="w-6 h-6" />,
-      technologies: ["Docker", "Docker Compose", "Docker Hub", "Git", "GitHub"],
+      technologies: ["Docker", "Docker Compose", "Docker Hub", "Git", "GitHub", "Postman", "Visual Studio Code", "Debian"],
     },
   ];
 

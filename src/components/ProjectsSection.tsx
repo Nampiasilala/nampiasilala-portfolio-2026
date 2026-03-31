@@ -25,12 +25,12 @@ export default function ProjectsSection() {
       description:
         "Application mobile de gestion de temps avec minuteries personnalisées.",
       longDescription:
-        "Application mobile complète permettant de gérer son temps avec des minuteries personnalisées, notifications intelligentes et suivi de productivité.",
+        "Application mobile complète permettant de gérer son temps avec des minuteries personnalisées.",
       technologies: ["JavaScript", "React Native", "Expo"],
       features: [
         "Minuteurs personnalisés",
-        "Notifications intelligentes",
-        "Statistiques de productivité",
+        "Deux modes de minuterie (chronomètre simple et chronomètre mode course)",
+        "Design moderne et intuitif",
       ],
       role: "Mobile Developer",
       year: "2024",
@@ -43,10 +43,10 @@ export default function ProjectsSection() {
       description:
         "Plateforme web permettant de générer automatiquement des pages de naissance.",
       longDescription:
-        "Application web permettant aux utilisateurs de créer des pages personnalisées pour des naissances avec galerie, partage et design moderne.",
+        "Application web permettant aux utilisateurs de créer des pages personnalisées pour des nouveaux-nés avec des différentes informations avec un design moderne.",
       technologies: ["JavaScript", "CSS", "HTML"],
       features: [
-        "Création automatique de pages",
+        "Création des informations de naissance",
         "Galerie d'images",
         "Partage en ligne",
       ],
@@ -65,6 +65,8 @@ export default function ProjectsSection() {
       technologies: ["React", "JavaScript", "PHP", "MySQL"],
       features: [
         "Gestion des dépenses",
+        "Gestion des revenus",
+        "Catégorisation",
         "Graphiques financiers",
         "Analyse des flux",
       ],
@@ -110,7 +112,9 @@ export default function ProjectsSection() {
       features: [
         "Simulation énergétique",
         "Calculs dynamiques",
-        "Interface cartographique",
+        "Intégration de données géographiques",
+        "Calcul des besoins énergétiques",
+        "Proposition des équipements adaptés",
       ],
       role: "Developer",
       year: "2024",
@@ -126,8 +130,7 @@ export default function ProjectsSection() {
         "Application mobile Flutter démontrant une architecture propre et une gestion d'état avancée.",
       technologies: ["Flutter", "Dart"],
       features: [
-        "Architecture propre",
-        "Gestion d'état",
+        "Architecture propre lié à l'application web photovoltaïque",
         "Performance optimisée",
       ],
       role: "Mobile Developer",
