@@ -58,7 +58,7 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
         className="shrink-0 block hover:opacity-80 transition-opacity"
       >
         <img 
-          src="/favicon.png" 
+          src="/logo.png" 
           alt="Logo Nampi"
           className="w-16 h-16 rounded-full object-cover border-2 border-slate-700"
         />
