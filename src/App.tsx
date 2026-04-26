@@ -1,5 +1,5 @@
+// src/App.tsx
 import { useState, useEffect } from "react";
-
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
@@ -7,57 +7,57 @@ import SkillsSection from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import { ViewModeProvider } from "./context/ViewModeContext";
 
 function App() {
   const [activeSection, setActiveSection] = useState("accueil");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 🔹 gérer le scroll (navbar background)
+  // ── Navbar shadow au scroll ──
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔹 détecter section active (bonus UX 🔥)
+  // ── Détection section active ──
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        // Parmi toutes les sections qui entrent dans la zone,
+        // on prend celle dont le bord supérieur est le plus proche du haut de l'écran
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
       },
       {
-        threshold: 0.6,
+        // Zone de détection : on considère une section active dès qu'elle
+        // occupe la bande centrale de l'écran (entre -30% et -60% du bas)
+        rootMargin: "-10% 0px -60% 0px",
+        threshold: 0,
       }
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
   return (
-    <>
-      <Navbar
-        activeSection={activeSection}
-        isScrolled={isScrolled}
-      />
-
+    <ViewModeProvider>
+      <Navbar activeSection={activeSection} isScrolled={isScrolled} />
       <HeroSection />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
       <Footer />
-    </>
+    </ViewModeProvider>
   );
 }
 
