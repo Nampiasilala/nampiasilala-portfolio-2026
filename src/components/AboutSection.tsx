@@ -8,52 +8,74 @@ import {
   Code2,
   Palette,
   Server,
+  Terminal,
+  ShieldCheck,
+  Wifi,
 } from "lucide-react";
 
 const TIMELINE = [
   {
-    year: "2019",
-    title: "Licence — Électronique, Informatique & Technologie",
-    org: "ESP Antsiranana",
-    desc: "Fondations solides en électronique analogique/numérique, programmation embarquée et systèmes.",
-  },
-  {
-    year: "2022",
+    year: "2025",
     title: "Master — STIC · Parcours Télécoms & Réseaux",
     org: "École Supérieure Polytechnique d'Antsiranana",
     desc: "Spécialisation en télécommunications, réseaux, systèmes embarqués et développement logiciel avancé.",
   },
   {
-    year: "2024–25",
-    title: "Projets & expériences professionnelles",
-    org: "Freelance & académique",
-    desc: "Conception d'applications fullstack, outils photovoltaïques, plateformes géolocalisées et création digitale.",
+    year: "2023",
+    title: "Licence — Électronique, Informatique & Technologie",
+    org: "École Supérieure Polytechnique d'Antsiranana",
+    desc: "Fondations solides en électronique analogique/numérique, programmation embarquée et systèmes.",
+  },
+
+  {
+    year: "2019",
+    title: "Baccalauréat — Série C",
+    org: "Lycée RANOHAVIMANANA Norbert",
+    desc: "Base scientifique solide, introduction à la physique, mathématiques et informatique.",
   },
 ];
 
 const PILLARS = [
   {
     Icon: Code2,
-    label: "Développement",
-    desc: "Web, mobile, backend — React, Flutter, Spring Boot, Django.",
+    label: "Développement Fullstack",
+    desc: "Web & Mobile, MERN, Next.js, Spring Boot.",
     accent: "#3b82f6",
   },
   {
     Icon: Cpu,
     label: "Électronique",
-    desc: "Systèmes embarqués, Arduino, Raspberry Pi, conception PCB.",
+    desc: "Systèmes embarqués, Arduino, conception PCB.",
     accent: "#f59e0b",
   },
   {
     Icon: Server,
     label: "DevOps",
-    desc: "Docker, CI/CD, déploiement, infrastructures conteneurisées.",
+    desc: "Docker, pipelines CI/CD, déploiement Cloud.",
     accent: "#10b981",
+  },
+  {
+    Icon: Terminal,
+    label: "Administration système",
+    desc: "Gestion de serveurs Linux, scripting Bash.",
+    accent: "#a855f7",
+  },
+  {
+    Icon: ShieldCheck,
+    label: "Cybersécurité",
+    desc: "Audit de sécurité, hardening, réseaux.",
+    accent: "#ef4444",
+  },
+  {
+    Icon: Wifi,
+    label: "Réseaux et Télécoms",
+    desc: "Architecture réseau, protocoles, fibre optique.",
+    accent: "#eab308",
   },
   {
     Icon: Palette,
     label: "Création digitale",
-    desc: "Graphisme, montage vidéo, motion design, identité visuelle.",
+    desc: "Graphisme, montage vidéo, Motion Design.",
     accent: "#ec4899",
   },
 ];
@@ -184,7 +206,7 @@ export default function AboutSection() {
                 }}
               >
                 <Zap size={12} />
-                Disponible — CDI / Freelance / Remote
+                Disponible : CDI / Freelance / Remote
               </span>
             </div>
           </motion.div>
@@ -273,16 +295,17 @@ export default function AboutSection() {
             className="text-xs font-semibold uppercase tracking-widest mb-6 text-center"
             style={{ color: "#475569" }}
           >
-            Mes 4 domaines d'expertise
+            Mes expertises techniques
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Ajustement du grid pour accueillir 7 éléments de façon fluide */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {PILLARS.map(({ Icon, label, desc, accent }, i) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                transition={{ delay: i * 0.05 }}
                 className="rounded-2xl p-5 group transition-all duration-200"
                 style={{
                   background: "rgba(255,255,255,0.025)",

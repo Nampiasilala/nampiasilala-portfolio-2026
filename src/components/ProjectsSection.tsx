@@ -4,7 +4,7 @@ import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 import { useViewMode } from "../context/ViewModeContext";
-import type { ViewMode } from "../context/ViewModeContext";
+import type { ViewMode } from "../types/viewMode";
 
 interface Project {
   titre: string;

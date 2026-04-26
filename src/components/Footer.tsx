@@ -4,6 +4,7 @@ import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 const NAV_LINKS = [
   { label: "Accueil",      href: "#accueil" },
   { label: "À propos",     href: "#apropos" },
+  { label: "Expérience",   href: "#experience" },
   { label: "Compétences",  href: "#competences" },
   { label: "Projets",      href: "#projets" },
   { label: "Contact",      href: "#contact" },
@@ -47,7 +48,7 @@ export default function Footer() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              NAMPI.
+              Nampiasilala
             </a>
             <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
               Ingénieur STIC — Hardware & Software.

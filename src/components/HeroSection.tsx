@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MapPin, ArrowDownRight, Sparkles } from "lucide-react";
 
 const TAGS = [
-  "Fullstack Dev",
+  "Développement Fullstack",
   "Électronique",
+  "Systèmes embarqués",
   "DevOps",
+  "Administration système",
+  "Cybersécurité",
+  "Réseaux et Télécoms",
   "Création digitale",
-  "Flutter",
-  "React",
 ];
 
 export default function HeroSection() {
@@ -91,7 +93,7 @@ export default function HeroSection() {
             {/* Stats — 4 colonnes sur mobile pour tenir dans la largeur */}
             <div
               className="grid grid-cols-4 lg:grid-cols-2 gap-2 mt-6"
-              style={{ width: "clamp(260px, 80vw, 224px)" }}
+              style={{ width: "clamp(300px, 80vw, 224px)" }}
             >
               {[
                 { value: "7+",   label: "Projets" },
@@ -218,10 +220,8 @@ export default function HeroSection() {
                 color: "#94a3b8",
               }}
             >
-              Ingénieur polyvalent formé à l'ESP Antsiranana, je conçois des solutions
-              techniques de bout en bout — de l'électronique embarquée aux applications
-              web modernes, en passant par le DevOps et la création digitale.
-              Je transforme des idées complexes en produits fiables et élégants.
+              Ingénieur polyvalent formé à l’ESP Antsiranana, je crée des solutions techniques complètes, de l’électronique embarquée aux applications web modernes, en passant par le DevOps et la création digitale.
+              Je transforme des idées complexes en produits simples, fiables et efficaces.
             </motion.p>
 
             {/* Tags */}
