@@ -213,7 +213,7 @@ export default function ProjectsSection() {
             Réalisations
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-black leading-tight"
+            className="text-2xl sm:text-3xl font-black leading-tight"
             style={{
               fontFamily: "'Syne', sans-serif",
               color: "#f1f5f9",

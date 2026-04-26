@@ -94,7 +94,7 @@ export default function AboutSection() {
             Qui suis-je
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-black"
+            className="text-2xl sm:text-3xl font-black"
             style={{ fontFamily: "'Syne', sans-serif", color: "#f1f5f9" }}
           >
             À propos de moi
