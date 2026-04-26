@@ -7,7 +7,7 @@
 //   context/useViewMode.ts       → hook + type exportés
 
 // Mais si tu préfères UN seul fichier, ajoute ce commentaire en haut :
-// eslint-disable-next-line react-refresh/only-export-components
+// // eslint-disable-next-line react-refresh/only-export-components
 // et garde tout ensemble. C'est juste un warning ESLint, pas une erreur.
 
 import { createContext, useContext, useState } from "react";

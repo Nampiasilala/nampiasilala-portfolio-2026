@@ -50,22 +50,19 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 gap-4">
-
           {/* Logo */}
-          <motion.a
-            href="#accueil"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="font-black text-lg tracking-tight shrink-0"
-            style={{
-              fontFamily: "'Syne', sans-serif",
-              background: "linear-gradient(90deg, #60a5fa, #818cf8)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            NAMPI.
-          </motion.a>
+      <motion.a
+        href="#accueil"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="shrink-0 block hover:opacity-80 transition-opacity"
+      >
+        <img 
+          src="/favicon.png" 
+          alt="Logo Nampi"
+          className="w-16 h-16 rounded-full object-cover border-2 border-slate-700"
+        />
+      </motion.a>
 
           {/* Nav links */}
           <div className="hidden md:flex items-center gap-1">
