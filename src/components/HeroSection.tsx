@@ -18,8 +18,13 @@ export default function HeroSection() {
     <section
       id="accueil"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0a0a0f 0%, #0f1623 50%, #0a0e1a 100%)" }}
-    >
+style={{
+  backgroundImage: "url('/images/bg.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+}}
+>
       {/* Grille décorative */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -299,7 +304,7 @@ export default function HeroSection() {
             >
               {[
                 { href: "https://github.com/nampiasilala",      Icon: Github,   label: "GitHub" },
-                { href: "https://linkedin.com/in/nampiasilala", Icon: Linkedin, label: "LinkedIn" },
+                { href: "https://www.linkedin.com/in/nampiasilala-andriatankafatra-5793ba327/", Icon: Linkedin, label: "LinkedIn" },
                 { href: "mailto:nampiasilala@gmail.com",        Icon: Mail,     label: "Email" },
               ].map(({ href, Icon, label }) => (
                 <a

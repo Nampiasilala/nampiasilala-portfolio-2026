@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 const SOCIAL_LINKS = [
   { Icon: Github,   href: "https://github.com/nampiasilala",         label: "GitHub" },
-  { Icon: Linkedin, href: "https://linkedin.com/in/nampiasilala",    label: "LinkedIn" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/nampiasilala-andriatankafatra-5793ba327/",    label: "LinkedIn" },
   { Icon: Mail,     href: "mailto:nampiasilala@gmail.com",           label: "Email" },
 ];
 

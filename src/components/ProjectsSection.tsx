@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
+import ImageCarousel from "./ImageCarousel";
 import { useViewMode } from "../context/ViewModeContext";
 import type { ViewMode } from "../types/viewMode";
 
@@ -14,11 +15,12 @@ interface Project {
   features?: string[];
   role?: string;
   year?: string;
-  image: string;
+  image: string;       // image principale (card)
+  images?: string[];   // galerie pour le modal (optionnel)
   github: string;
   demo: string;
   modes: ViewMode[];
-  accent?: string; // couleur accent par projet
+  accent?: string;
 }
 
 const projets: Project[] = [
@@ -38,6 +40,7 @@ const projets: Project[] = [
     role: "Mobile Developer",
     year: "2024",
     image: "/images/1.png",
+    images: ["/images/1.png"],  // ajoute tes captures supplémentaires ici
     github: "https://github.com/Nampiasilala/app-mobile-timer.git",
     demo: "#",
     modes: ["dev"],
@@ -59,6 +62,7 @@ const projets: Project[] = [
     role: "Frontend Developer",
     year: "2024",
     image: "/images/2.png",
+    images: ["/images/2.png", "/images/2.png", "/images/2.png"],
     github: "https://github.com/Nampiasilala/site-de-naissance",
     demo: "#",
     modes: ["dev"],
@@ -80,6 +84,7 @@ const projets: Project[] = [
     role: "Fullstack Developer",
     year: "2024",
     image: "/images/3.png",
+    images: ["/images/3.png"],
     github: "https://github.com/Nampiasilala/flux_financier_back.git",
     demo: "#",
     modes: ["dev"],
@@ -101,13 +106,14 @@ const projets: Project[] = [
     role: "Backend & Logic Developer",
     year: "2023",
     image: "/images/4.png",
+    images: ["/images/4.png"],
     github: "https://github.com/Nampiasilala/projet_blackjack.git",
     demo: "#",
     modes: ["dev"],
     accent: "#f59e0b",
   },
   {
-    titre: "Outils Photovoltaïquess",
+    titre: "Outils Photovoltaïques",
     description:
       "Simulateur d'installation solaire avec calcul de production, proposition d'équipements et cartographie géographique.",
     longDescription:
@@ -123,6 +129,7 @@ const projets: Project[] = [
     role: "Fullstack Developer",
     year: "2024",
     image: "/images/5.png",
+    images: ["/images/5.png"],
     github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
     demo: "#",
     modes: ["dev", "electronique"],
@@ -138,12 +145,13 @@ const projets: Project[] = [
       "Gestion précise du temps (DS1307)",
       "Mesure de température en temps réel (DS18B20)",
       "Interface de configuration par clavier matriciel",
-      "Alarme programmable intégrée"
+      "Alarme programmable intégrée",
     ],
     role: "Electronic Engineer",
     year: "2023",
-    image: "/images/horloge-led.png", // Remplace par ton image réelle
-    github: "#", 
+    image: "/images/horloge-led.png",
+    images: ["/images/HorlogeDigital/1.png", "/images/HorlogeDigital/2.jpg", "/images/HorlogeDigital/3.jpg", "/images/HorlogeDigital/4.png", "/images/HorlogeDigital/5.jpg", "/images/HorlogeDigital/6.jpg", "/images/HorlogeDigital/7.jpg", "/images/HorlogeDigital/8.jpg", "/images/HorlogeDigital/9.png"],
+    github: "#",
     demo: "#",
     modes: ["electronique"],
     accent: "#00979d",
@@ -158,11 +166,12 @@ const projets: Project[] = [
       "Pilotage de gâche électrique",
       "Conception d'alimentation stabilisée 220V vers DC",
       "Sécurité par isolation galvanique (Relais)",
-      "Filtrage et régulation de tension intégrés"
+      "Filtrage et régulation de tension intégrés",
     ],
     role: "Electronic Engineer",
     year: "2023",
-    image: "/images/serrure-ir.png", // Remplace par ton image réelle
+    image: "/images/serrure-ir.png",
+    images: ["/images/CleNumérique/1.jpg", "/images/CleNumérique/2.jpg", "/images/CleNumérique/3.png", "/images/CleNumérique/4.png", "/images/CleNumérique/5.png", "/images/CleNumérique/6.png", "/images/CleNumérique/7.png", "/images/CleNumérique/8.png", "/images/CleNumérique/9.png", "/images/CleNumérique/10.png", "/images/CleNumérique/11.png", "/images/CleNumérique/12.png", "/images/CleNumérique/13.jpg"],
     github: "#",
     demo: "#",
     modes: ["electronique"],
@@ -184,6 +193,7 @@ const projets: Project[] = [
     role: "Mobile Developer",
     year: "2024",
     image: "/images/PV_mobile.png",
+    images: ["/images/PV_mobile.png"],
     github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
     demo: "#",
     modes: ["dev"],
@@ -206,6 +216,7 @@ const projets: Project[] = [
     role: "Fullstack Developer",
     year: "2025",
     image: "/images/figma-localisation-geographique.png",
+    images: ["/images/figma-localisation-geographique.png"],
     github: "https://github.com/Nampiasilala/alumni-geolocalisation",
     demo: "#",
     modes: ["dev", "devops"],
@@ -234,6 +245,12 @@ export default function ProjectsSection() {
   const visible = projets.filter(
     (p) => viewMode === "all" || p.modes.includes(viewMode)
   );
+
+  // Résout les images du modal : images[] en priorité, sinon repli sur image
+  const getModalImages = (project: Project): string[] =>
+    project.images && project.images.length > 0
+      ? project.images
+      : [project.image];
 
   return (
     <section
@@ -315,14 +332,12 @@ export default function ProjectsSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ filter: "brightness(0.85)" }}
                   />
-                  {/* Overlay gradient */}
                   <div
                     className="absolute inset-0"
                     style={{
                       background: "linear-gradient(to top, #0d1420 0%, transparent 60%)",
                     }}
                   />
-                  {/* Accent dot */}
                   <div
                     className="absolute top-3 right-3 w-2 h-2 rounded-full"
                     style={{ background: projet.accent, boxShadow: `0 0 8px ${projet.accent}` }}
@@ -387,17 +402,15 @@ export default function ProjectsSection() {
       {/* Modal */}
       {selectedProject && (
         <Modal onClose={() => setSelectedProject(null)}>
-          <div
-            className="overflow-hidden rounded-xl mb-5 -mx-5 sm:mx-0 -mt-1"
+          {/* ── Carrousel en haut du modal ── */}
+          <ImageCarousel
+            key={selectedProject.titre}
+            images={getModalImages(selectedProject)}
+            alt={selectedProject.titre}
+            accentColor={selectedProject.accent}
+            className="rounded-xl mb-5 -mx-5 sm:mx-0 -mt-1 h-52 sm:h-60"
             style={{ border: `1px solid ${selectedProject.accent}33` }}
-          >
-            <img
-              src={selectedProject.image}
-              alt={selectedProject.titre}
-              className="w-full h-52 sm:h-60 object-cover"
-              style={{ filter: "brightness(0.8)" }}
-            />
-          </div>
+          />
 
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">

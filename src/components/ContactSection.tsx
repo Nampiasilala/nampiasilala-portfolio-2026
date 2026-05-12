@@ -14,7 +14,7 @@ const LINKS = [
   {
     label: "LinkedIn",
     value: "linkedin.com/in/nampiasilala",
-    href: "https://linkedin.com/in/nampiasilala",
+    href: "https://www.linkedin.com/in/nampiasilala-andriatankafatra-5793ba327/",
     Icon: Linkedin,
     accent: "#60a5fa",
   },
@@ -220,7 +220,7 @@ export default function ContactSection() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Jean Dupont"
+                    placeholder="RAKOTONDRABE Jean"
                     value={form.name}
                     onChange={handleChange}
                     style={inputStyle}
@@ -237,7 +237,7 @@ export default function ContactSection() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="jean@example.com"
+                    placeholder="jean@rakotondrabe.com"
                     value={form.email}
                     onChange={handleChange}
                     style={inputStyle}
