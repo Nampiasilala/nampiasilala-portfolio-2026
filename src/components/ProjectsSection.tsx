@@ -107,7 +107,7 @@ const projets: Project[] = [
     accent: "#f59e0b",
   },
   {
-    titre: "Outils Photovoltaïques",
+    titre: "Outils Photovoltaïquess",
     description:
       "Simulateur d'installation solaire avec calcul de production, proposition d'équipements et cartographie géographique.",
     longDescription:
@@ -129,6 +129,46 @@ const projets: Project[] = [
     accent: "#f59e0b",
   },
   {
+    titre: "Horloge & Calendrier Digital",
+    description: "Dispositif multifonctionnel affichant heure, date et température sur matrices LED avec gestion d'alarme.",
+    longDescription: "Système complet basé sur un Arduino MEGA pilotant quatre matrices LED en série. Intègre un module RTC DS1307 pour la précision temporelle et un capteur DS18B20 pour la température ambiante. L'utilisateur peut configurer une alarme via un clavier matriciel et basculer entre différents modes d'affichage interactifs.",
+    technologies: ["Arduino", "C++", "Capteurs RTC", "Matrices LED"],
+    features: [
+      "Affichage dynamique sur matrices LED",
+      "Gestion précise du temps (DS1307)",
+      "Mesure de température en temps réel (DS18B20)",
+      "Interface de configuration par clavier matriciel",
+      "Alarme programmable intégrée"
+    ],
+    role: "Electronic Engineer",
+    year: "2023",
+    image: "/images/horloge-led.png", // Remplace par ton image réelle
+    github: "#", 
+    demo: "#",
+    modes: ["electronique"],
+    accent: "#00979d",
+  },
+  {
+    titre: "Clé Numérique Infrarouge",
+    description: "Système de contrôle d'accès sécurisé par télécommande infrarouge et commande de puissance pour gâche électrique.",
+    longDescription: "Réalisation d'un dispositif de commande à distance sécurisé. Le projet couvre toute la chaîne de traitement : réception du signal IR, décodage hexadécimal par microcontrôleur, et pilotage d'une mini gâche de serrure électrique via un circuit de puissance (relais). Comprend une étude complète d'une alimentation stabilisée (Redressement, Filtrage, Régulation).",
+    technologies: ["Arduino", "Infrarouge", "Electronique de puissance", "Relais"],
+    features: [
+      "Décodage de signaux IR (Hexadécimal)",
+      "Pilotage de gâche électrique",
+      "Conception d'alimentation stabilisée 220V vers DC",
+      "Sécurité par isolation galvanique (Relais)",
+      "Filtrage et régulation de tension intégrés"
+    ],
+    role: "Electronic Engineer",
+    year: "2023",
+    image: "/images/serrure-ir.png", // Remplace par ton image réelle
+    github: "#",
+    demo: "#",
+    modes: ["electronique"],
+    accent: "#e74c3c",
+  },
+  {
     titre: "Outils PV Mobile",
     description:
       "Application Flutter compagnon de l'outil photovoltaïque web — architecture propre, performance native.",
@@ -143,7 +183,7 @@ const projets: Project[] = [
     ],
     role: "Mobile Developer",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
+    image: "/images/PV_mobile.png",
     github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
     demo: "#",
     modes: ["dev"],
@@ -181,6 +221,10 @@ const TECH_COLORS: Record<string, string> = {
   "Docker": "#2496ed20",
   "Python": "#3776ab20",
   "Java": "#ed8b0020",
+  "Arduino": "#00979d22",
+  "C++": "#00599c22",
+  "Electronique": "#f1c40f22",
+  "Infrarouge": "#e74c3c22",
 };
 
 export default function ProjectsSection() {
