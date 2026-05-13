@@ -216,7 +216,7 @@ const projets: Project[] = [
     role: "Fullstack Developer",
     year: "2025",
     image: "/images/figma-localisation-geographique.png",
-    images: ["/images/figma-localisation-geographique.png"],
+    images: ["/images/AlumniGeo/1.png", "/images/AlumniGeo/2.png", "/images/AlumniGeo/3.png", "/images/AlumniGeo/4.png", "/images/AlumniGeo/5.png", "/images/AlumniGeo/6.png", "/images/AlumniGeo/7.png", "/images/AlumniGeo/8.png", "/images/AlumniGeo/9.png", "/images/AlumniGeo/10.png", "/images/AlumniGeo/11.png", "/images/AlumniGeo/12.png", "/images/AlumniGeo/13.png", "/images/AlumniGeo/14.png", "/images/AlumniGeo/15.png", "/images/AlumniGeo/16.png", "/images/AlumniGeo/17.png", "/images/AlumniGeo/18.png"],
     github: "https://github.com/Nampiasilala/alumni-geolocalisation",
     demo: "#",
     modes: ["dev", "devops"],

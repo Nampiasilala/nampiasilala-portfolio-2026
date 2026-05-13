@@ -177,9 +177,9 @@ style={{
               <p
                 className="font-semibold uppercase mb-2"
                 style={{
-                  fontSize: "clamp(9px, 2.5vw, 13px)",
+                  fontSize: "clamp(15px, 2.6vw, 19px)",
                   letterSpacing: "0.2em",
-                  color: "#64748b",
+                  color: "#f1f5f9",
                 }}
               >
                 Ingénieur · 24 ans · Madagascar
@@ -192,7 +192,7 @@ style={{
                   // 14px min (pour les tout petits écrans), 4.5vw (croissance très lente), 36px max (pour ne pas dominer)
                   fontSize: "clamp(14px, 4.5vw, 36px)", 
                   letterSpacing: "-0.02em", // Réduit l'espace entre les lettres
-                  color: "#f1f5f9",
+                  color: "#94a3b8",
                   wordBreak: "break-word", // Force le passage à la ligne si vraiment nécessaire
                 }}
               >
