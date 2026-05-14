@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, MapPin, Send, Zap, Clock, Loader2 } from "lucide-react";
 import { useState } from "react";
 
-// Clé Web3Forms — https://web3forms.com (gratuit, pas de SDK)
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
+// Clé Web3Forms — publique par design (ne peut qu'envoyer vers ton email)
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY ?? "REMPLACE_PAR_TA_CLE";
 
 const LINKS = [
   {
