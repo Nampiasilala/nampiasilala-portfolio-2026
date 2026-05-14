@@ -1,6 +1,6 @@
 // src/components/ProjectsSection.tsx
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
+import { Github, ExternalLink, Calendar, Tag, Video } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 import ImageCarousel from "./ImageCarousel";
@@ -15,10 +15,12 @@ interface Project {
   features?: string[];
   role?: string;
   year?: string;
-  image: string;       // image principale (card)
-  images?: string[];   // galerie pour le modal (optionnel)
-  github: string;
-  demo: string;
+  image: string;
+  images?: string[];
+  github?: string;
+  driveVideo?: string;
+  dockerHub?: string;
+  demo?: string;
   modes: ViewMode[];
   accent?: string;
 }
@@ -40,9 +42,8 @@ const projets: Project[] = [
     role: "Mobile Developer",
     year: "2024",
     image: "/images/1.png",
-    images: ["/images/1.png"],  // ajoute tes captures supplémentaires ici
+    images: ["/images/1.png"],
     github: "https://github.com/Nampiasilala/app-mobile-timer.git",
-    demo: "#",
     modes: ["dev"],
     accent: "#3b82f6",
   },
@@ -64,7 +65,6 @@ const projets: Project[] = [
     image: "/images/2.png",
     images: ["/images/2.png", "/images/2.png", "/images/2.png"],
     github: "https://github.com/Nampiasilala/site-de-naissance",
-    demo: "#",
     modes: ["dev"],
     accent: "#ec4899",
   },
@@ -86,7 +86,6 @@ const projets: Project[] = [
     image: "/images/3.png",
     images: ["/images/3.png"],
     github: "https://github.com/Nampiasilala/flux_financier_back.git",
-    demo: "#",
     modes: ["dev"],
     accent: "#10b981",
   },
@@ -108,7 +107,6 @@ const projets: Project[] = [
     image: "/images/4.png",
     images: ["/images/4.png"],
     github: "https://github.com/Nampiasilala/projet_blackjack.git",
-    demo: "#",
     modes: ["dev"],
     accent: "#f59e0b",
   },
@@ -131,7 +129,6 @@ const projets: Project[] = [
     image: "/images/5.png",
     images: ["/images/5.png"],
     github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
-    demo: "#",
     modes: ["dev", "electronique"],
     accent: "#f59e0b",
   },
@@ -151,8 +148,6 @@ const projets: Project[] = [
     year: "2023",
     image: "/images/horloge-led.png",
     images: ["/images/HorlogeDigital/1.png", "/images/HorlogeDigital/2.jpg", "/images/HorlogeDigital/3.jpg", "/images/HorlogeDigital/4.png", "/images/HorlogeDigital/5.jpg", "/images/HorlogeDigital/6.jpg", "/images/HorlogeDigital/7.jpg", "/images/HorlogeDigital/8.jpg", "/images/HorlogeDigital/9.png"],
-    github: "#",
-    demo: "#",
     modes: ["electronique"],
     accent: "#00979d",
   },
@@ -172,8 +167,6 @@ const projets: Project[] = [
     year: "2023",
     image: "/images/serrure-ir.png",
     images: ["/images/CleNumérique/1.jpg", "/images/CleNumérique/2.jpg", "/images/CleNumérique/3.png", "/images/CleNumérique/4.png", "/images/CleNumérique/5.png", "/images/CleNumérique/6.png", "/images/CleNumérique/7.png", "/images/CleNumérique/8.png", "/images/CleNumérique/9.png", "/images/CleNumérique/10.png", "/images/CleNumérique/11.png", "/images/CleNumérique/12.png", "/images/CleNumérique/13.jpg"],
-    github: "#",
-    demo: "#",
     modes: ["electronique"],
     accent: "#e74c3c",
   },
@@ -195,7 +188,6 @@ const projets: Project[] = [
     image: "/images/PV_mobile.png",
     images: ["/images/PV_mobile.png"],
     github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
-    demo: "#",
     modes: ["dev"],
     accent: "#06b6d4",
   },
@@ -218,7 +210,8 @@ const projets: Project[] = [
     image: "/images/figma-localisation-geographique.png",
     images: ["/images/AlumniGeo/1.png", "/images/AlumniGeo/2.png", "/images/AlumniGeo/3.png", "/images/AlumniGeo/4.png", "/images/AlumniGeo/5.png", "/images/AlumniGeo/6.png", "/images/AlumniGeo/7.png", "/images/AlumniGeo/8.png", "/images/AlumniGeo/9.png", "/images/AlumniGeo/10.png", "/images/AlumniGeo/11.png", "/images/AlumniGeo/12.png", "/images/AlumniGeo/13.png", "/images/AlumniGeo/14.png", "/images/AlumniGeo/15.png", "/images/AlumniGeo/16.png", "/images/AlumniGeo/17.png", "/images/AlumniGeo/18.png"],
     github: "https://github.com/Nampiasilala/alumni-geolocalisation",
-    demo: "#",
+    dockerHub: "https://hub.docker.com/u/nampiasilala",
+    driveVideo: "https://drive.google.com/drive/folders/1tf4l3kQgovF1T3Jj0CwcTAwP3aIrHFhi?usp=drive_link",
     modes: ["dev", "devops"],
     accent: "#8b5cf6",
   },
@@ -238,6 +231,58 @@ const TECH_COLORS: Record<string, string> = {
   "Infrarouge": "#e74c3c22",
 };
 
+// ─── Icône DockerHub (SVG custom — absent de lucide-react) ────────────────────
+function DockerIcon({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13.983 11.078h2.119a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.119a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 0 0 .186-.186V3.574a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 0 0 .186-.186V6.29a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 0 0 .184-.186V6.29a.185.185 0 0 0-.185-.185H8.1a.185.185 0 0 0-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 0 0 .185-.186V6.29a.185.185 0 0 0-.185-.185H5.136a.186.186 0 0 0-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 0 0 .185-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.186.186 0 0 0-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 0 0 .184-.185V9.006a.185.185 0 0 0-.184-.186h-2.12a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 0 0-.75.748 11.376 11.376 0 0 0 .692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 0 0 3.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z" />
+    </svg>
+  );
+}
+
+// ─── Bouton de lien générique ─────────────────────────────────────────────────
+function LinkButton({
+  href,
+  icon,
+  label,
+  accent,
+  variant = "ghost",
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  accent?: string;
+  variant?: "ghost" | "accent";
+}) {
+  const isAccent = variant === "accent" && accent;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all"
+      style={{
+        background: isAccent ? `${accent}22` : "rgba(255,255,255,0.06)",
+        border: `1px solid ${isAccent ? `${accent}44` : "rgba(255,255,255,0.1)"}`,
+        color: isAccent ? accent : "#e2e8f0",
+      }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLAnchorElement).style.background = isAccent
+          ? `${accent}33`
+          : "rgba(255,255,255,0.1)";
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLAnchorElement).style.background = isAccent
+          ? `${accent}22`
+          : "rgba(255,255,255,0.06)";
+      }}
+    >
+      {icon}
+      {label}
+    </a>
+  );
+}
+
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { viewMode } = useViewMode();
@@ -246,7 +291,6 @@ export default function ProjectsSection() {
     (p) => viewMode === "all" || p.modes.includes(viewMode)
   );
 
-  // Résout les images du modal : images[] en priorité, sinon repli sur image
   const getModalImages = (project: Project): string[] =>
     project.images && project.images.length > 0
       ? project.images
@@ -342,6 +386,38 @@ export default function ProjectsSection() {
                     className="absolute top-3 right-3 w-2 h-2 rounded-full"
                     style={{ background: projet.accent, boxShadow: `0 0 8px ${projet.accent}` }}
                   />
+                  {/* Badges de liens en overlay */}
+                  {(projet.github || projet.driveVideo || projet.dockerHub) && (
+                    <div className="absolute top-3 left-3 flex gap-1.5">
+                      {projet.github && (
+                        <span
+                          className="flex items-center justify-center w-6 h-6 rounded-full"
+                          style={{ background: "rgba(0,0,0,0.55)", color: "#94a3b8" }}
+                          title="GitHub disponible"
+                        >
+                          <Github size={11} />
+                        </span>
+                      )}
+                      {projet.driveVideo && (
+                        <span
+                          className="flex items-center justify-center w-6 h-6 rounded-full"
+                          style={{ background: "rgba(0,0,0,0.55)", color: "#94a3b8" }}
+                          title="Vidéo démo disponible"
+                        >
+                          <Video size={11} />
+                        </span>
+                      )}
+                      {projet.dockerHub && (
+                        <span
+                          className="flex items-center justify-center w-6 h-6 rounded-full"
+                          style={{ background: "rgba(0,0,0,0.55)", color: "#94a3b8" }}
+                          title="DockerHub disponible"
+                        >
+                          <DockerIcon size={11} />
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -402,7 +478,6 @@ export default function ProjectsSection() {
       {/* Modal */}
       {selectedProject && (
         <Modal onClose={() => setSelectedProject(null)}>
-          {/* ── Carrousel en haut du modal ── */}
           <ImageCarousel
             key={selectedProject.titre}
             images={getModalImages(selectedProject)}
@@ -468,44 +543,48 @@ export default function ProjectsSection() {
             ))}
           </div>
 
-          <div className="flex gap-3 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <a
-              href={selectedProject.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
-              style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "#e2e8f0",
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)";
-              }}
+          {/* Liens — affichage conditionnel selon les champs renseignés */}
+          {(selectedProject.github || selectedProject.driveVideo || selectedProject.dockerHub || (selectedProject.demo && selectedProject.demo !== "#")) && (
+            <div
+              className="flex flex-wrap gap-3 pt-4"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
             >
-              <Github size={15} />
-              Code source
-            </a>
-            {selectedProject.demo !== "#" && (
-              <a
-                href={selectedProject.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
-                style={{
-                  background: `${selectedProject.accent}22`,
-                  border: `1px solid ${selectedProject.accent}44`,
-                  color: selectedProject.accent,
-                }}
-              >
-                <ExternalLink size={15} />
-                Démo live
-              </a>
-            )}
-          </div>
+              {selectedProject.github && (
+                <LinkButton
+                  href={selectedProject.github}
+                  icon={<Github size={15} />}
+                  label="Code source"
+                />
+              )}
+              {selectedProject.driveVideo && (
+                <LinkButton
+                  href={selectedProject.driveVideo}
+                  icon={<Video size={15} />}
+                  label="Vidéo démo"
+                  accent={selectedProject.accent}
+                  variant="accent"
+                />
+              )}
+              {selectedProject.dockerHub && (
+                <LinkButton
+                  href={selectedProject.dockerHub}
+                  icon={<DockerIcon size={15} />}
+                  label="DockerHub"
+                  accent="#2496ed"
+                  variant="accent"
+                />
+              )}
+              {selectedProject.demo && selectedProject.demo !== "#" && (
+                <LinkButton
+                  href={selectedProject.demo}
+                  icon={<ExternalLink size={15} />}
+                  label="Démo live"
+                  accent={selectedProject.accent}
+                  variant="accent"
+                />
+              )}
+            </div>
+          )}
         </Modal>
       )}
 
