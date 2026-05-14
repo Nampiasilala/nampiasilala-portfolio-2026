@@ -46,7 +46,7 @@ export default function ContactSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  async function handleSubmit(e: React.MouseEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     if (status === "sending") return;
@@ -253,7 +253,7 @@ export default function ContactSection() {
                 Envoyer un message
               </h3>
 
-              <div className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {/* Nom */}
                 <div>
                   <label className="block text-xs font-semibold mb-1.5 uppercase tracking-widest" style={{ color: "#475569" }}>
@@ -265,6 +265,7 @@ export default function ContactSection() {
                     placeholder="RAKOTONDRABE Jean"
                     value={form.name}
                     onChange={handleChange}
+                    required
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
                     onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
@@ -282,6 +283,7 @@ export default function ContactSection() {
                     placeholder="jean@rakotondrabe.com"
                     value={form.email}
                     onChange={handleChange}
+                    required
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
                     onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
@@ -299,6 +301,7 @@ export default function ContactSection() {
                     placeholder="Décrivez votre projet ou votre besoin..."
                     value={form.message}
                     onChange={handleChange}
+                    required
                     style={{ ...inputStyle, resize: "none" }}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
                     onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
@@ -307,7 +310,7 @@ export default function ContactSection() {
 
                 {/* Bouton */}
                 <motion.button
-                  onClick={handleSubmit}
+                  type="submit"
                   whileHover={status === "idle" ? { scale: 1.02 } : {}}
                   whileTap={status === "idle" ? { scale: 0.97 } : {}}
                   disabled={status === "sending"}
@@ -326,7 +329,7 @@ export default function ContactSection() {
                     ? "Vous recevrez une réponse dans les 24h."
                     : "Le message est envoyé directement dans ma boîte mail."}
                 </p>
-              </div>
+              </form>
             </div>
           </motion.div>
         </div>
