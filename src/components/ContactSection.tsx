@@ -1,7 +1,10 @@
 // src/components/ContactSection.tsx
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, MapPin, Send, Zap, Clock } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Send, Zap, Clock, Loader2 } from "lucide-react";
 import { useState } from "react";
+
+// Clé Web3Forms — https://web3forms.com (gratuit, pas de SDK)
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
 const LINKS = [
   {
@@ -28,32 +31,52 @@ const LINKS = [
 ];
 
 const AVAILABILITIES = [
-  { Icon: Zap,   text: "Disponible immédiatement" },
-  { Icon: Clock, text: "Réponse sous 24h" },
+  { Icon: Zap,    text: "Disponible immédiatement" },
+  { Icon: Clock,  text: "Réponse sous 24h" },
   { Icon: MapPin, text: "Remote · Madagascar" },
 ];
 
-export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+type Status = "idle" | "sending" | "success" | "error";
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+export default function ContactSection() {
+  const [form, setForm]     = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<Status>("idle");
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.MouseEvent) {
+  async function handleSubmit(e: React.MouseEvent) {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    // Ouvre le client mail avec les données pré-remplies
-    const subject = encodeURIComponent(`Contact portfolio — ${form.name}`);
-    const body = encodeURIComponent(
-      `Bonjour Nampiasilala,\n\n${form.message}\n\n---\n${form.name}\n${form.email}`
-    );
-    window.open(`mailto:nampiasilala@gmail.com?subject=${subject}&body=${body}`);
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    if (status === "sending") return;
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name:        form.name,
+          email:       form.email,
+          message:     form.message,
+          subject:     `Portfolio — Message de ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (err) {
+      console.error("Web3Forms error:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   }
 
   const inputStyle: React.CSSProperties = {
@@ -66,6 +89,29 @@ export default function ContactSection() {
     color: "#e2e8f0",
     outline: "none",
     transition: "border-color 0.2s",
+  };
+
+  const buttonContent: Record<Status, React.ReactNode> = {
+    idle:    <><Send size={14} />Envoyer le message</>,
+    sending: <><Loader2 size={14} className="animate-spin" />Envoi en cours…</>,
+    success: <>✓ Message envoyé !</>,
+    error:   <>✗ Erreur — réessayez</>,
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    background:
+      status === "success" ? "rgba(16,185,129,0.15)"  :
+      status === "error"   ? "rgba(239,68,68,0.15)"   :
+      "linear-gradient(135deg, #3b82f6, #6366f1)",
+    color:
+      status === "success" ? "#6ee7b7" :
+      status === "error"   ? "#fca5a5" :
+      "#fff",
+    border:
+      status === "success" ? "1px solid rgba(16,185,129,0.3)"  :
+      status === "error"   ? "1px solid rgba(239,68,68,0.3)"   :
+      "none",
+    boxShadow: status === "idle" ? "0 4px 24px rgba(99,102,241,0.3)" : "none",
   };
 
   return (
@@ -125,8 +171,7 @@ export default function ContactSection() {
               <p className="text-base leading-relaxed mb-3" style={{ color: "#94a3b8" }}>
                 Vous avez un projet web, mobile, électronique ou une idée à concrétiser ?
                 Je suis disponible pour des missions en{" "}
-                <span style={{ color: "#a5b4fc" }}>CDI, freelance ou collaboration
-                internationale</span>.
+                <span style={{ color: "#a5b4fc" }}>CDI, freelance ou collaboration internationale</span>.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "#94a3b8" }}>
                 Que ce soit pour développer une application de zéro, intégrer un système
@@ -157,7 +202,7 @@ export default function ContactSection() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200 group"
+                  className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200"
                   style={{
                     background: "rgba(255,255,255,0.025)",
                     border: "1px solid rgba(255,255,255,0.06)",
@@ -165,12 +210,12 @@ export default function ContactSection() {
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLAnchorElement;
                     el.style.borderColor = `${accent}44`;
-                    el.style.background = `${accent}08`;
+                    el.style.background  = `${accent}08`;
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLAnchorElement;
                     el.style.borderColor = "rgba(255,255,255,0.06)";
-                    el.style.background = "rgba(255,255,255,0.025)";
+                    el.style.background  = "rgba(255,255,255,0.025)";
                   }}
                 >
                   <div
@@ -204,10 +249,7 @@ export default function ContactSection() {
                 border: "1px solid rgba(255,255,255,0.07)",
               }}
             >
-              <h3
-                className="text-lg font-bold mb-6"
-                style={{ color: "#f1f5f9" }}
-              >
+              <h3 className="text-lg font-bold mb-6" style={{ color: "#f1f5f9" }}>
                 Envoyer un message
               </h3>
 
@@ -225,7 +267,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
-                    onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                   />
                 </div>
 
@@ -242,7 +284,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
-                    onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                   />
                 </div>
 
@@ -259,50 +301,40 @@ export default function ContactSection() {
                     onChange={handleChange}
                     style={{ ...inputStyle, resize: "none" }}
                     onFocus={e => (e.target.style.borderColor = "rgba(99,102,241,0.5)")}
-                    onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    onBlur={e  => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                   />
                 </div>
 
                 {/* Bouton */}
                 <motion.button
                   onClick={handleSubmit}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={status === "idle" ? { scale: 1.02 } : {}}
+                  whileTap={status === "idle" ? { scale: 0.97 } : {}}
+                  disabled={status === "sending"}
                   className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all"
                   style={{
-                    background: sent
-                      ? "rgba(16,185,129,0.15)"
-                      : "linear-gradient(135deg, #3b82f6, #6366f1)",
-                    color: sent ? "#6ee7b7" : "#fff",
-                    border: sent ? "1px solid rgba(16,185,129,0.3)" : "none",
-                    boxShadow: sent ? "none" : "0 4px 24px rgba(99,102,241,0.3)",
+                    ...buttonStyle,
+                    cursor: status === "sending" ? "not-allowed" : "pointer",
+                    opacity: status === "sending" ? 0.8 : 1,
                   }}
                 >
-                  {sent ? (
-                    "✓ Message prêt à envoyer !"
-                  ) : (
-                    <>
-                      <Send size={14} />
-                      Envoyer le message
-                    </>
-                  )}
+                  {buttonContent[status]}
                 </motion.button>
 
                 <p className="text-xs text-center" style={{ color: "#334155" }}>
-                  Ouvre votre client mail avec le message pré-rempli.
+                  {status === "success"
+                    ? "Vous recevrez une réponse dans les 24h."
+                    : "Le message est envoyé directement dans ma boîte mail."}
                 </p>
               </div>
             </div>
           </motion.div>
         </div>
-
       </div>
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&display=swap');
-        input::placeholder, textarea::placeholder {
-          color: #334155;
-        }
+        input::placeholder, textarea::placeholder { color: #334155; }
       `}</style>
     </section>
   );
