@@ -15,22 +15,21 @@ import {
 
 const TIMELINE = [
   {
-    year: "2025",
-    title: "Master — STIC · Parcours Télécoms & Réseaux",
-    org: "École Supérieure Polytechnique d'Antsiranana",
+    year: "2024 - 2025",
+    title: "MASTER - STIC · Parcours Télécommunications et Réseaux",
+    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana | 201 - Antsiranana",
     desc: "Spécialisation en télécommunications, réseaux, systèmes embarqués et développement logiciel avancé.",
   },
   {
-    year: "2023",
-    title: "Licence — Électronique, Informatique & Technologie",
-    org: "École Supérieure Polytechnique d'Antsiranana",
+    year: "2022 - 2023",
+    title: "LICENCE - GET · Parcours Électronique, Informatique et Technologie",
+    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana | 201 - Antsiranana",
     desc: "Fondations solides en électronique analogique/numérique, programmation embarquée et systèmes.",
   },
-
   {
-    year: "2019",
-    title: "Baccalauréat — Série C",
-    org: "Lycée RANOHAVIMANANA Norbert",
+    year: "2018 - 2019",
+    title: "BACCALAUREAT - Série C",
+    org: "Université de Toamasina | Lycée RANOHAVIMANANA Norbert | 503 - Ambatondrazaka",
     desc: "Base scientifique solide, introduction à la physique, mathématiques et informatique.",
   },
 ];
@@ -39,7 +38,7 @@ const PILLARS = [
   {
     Icon: Code2,
     label: "Développement Fullstack",
-    desc: "Web & Mobile, MERN, Next.js, Spring Boot.",
+    desc: "Web & Mobile, MERN, Next.js, Java Spring Boot, Django, NestJS, Flutter.",
     accent: "#3b82f6",
   },
   {
@@ -57,34 +56,40 @@ const PILLARS = [
   {
     Icon: Terminal,
     label: "Administration système",
-    desc: "Gestion de serveurs Linux, scripting Bash.",
+    desc: "Gestion de serveurs Linux, scripting Bash, Windows Server, Linux.",
     accent: "#a855f7",
   },
   {
     Icon: ShieldCheck,
     label: "Cybersécurité",
-    desc: "Audit de sécurité, hardening, réseaux.",
+    desc: "Audit de sécurité, réseaux, Kali Linux.",
     accent: "#ef4444",
   },
   {
     Icon: Wifi,
     label: "Réseaux et Télécoms",
-    desc: "Architecture réseau, protocoles, fibre optique.",
+    desc: "Architecture réseau, protocoles, 3GPP, VLAN, VRF, IPV4, IPV6, Ingénierie & Optimisation Core Network.",
     accent: "#eab308",
   },
   {
     Icon: Palette,
     label: "Création digitale",
-    desc: "Graphisme, montage vidéo, Motion Design.",
+    desc: "Graphisme, montage vidéo, Création contenu digital.",
     accent: "#ec4899",
   },
 ];
 
 const STATS = [
-  { value: "7+", label: "Projets livrés" },
-  { value: "4", label: "Domaines" },
+  { value: "9+", label: "Projets livrés" },
+  { value: "4+", label: "Domaines" },
   { value: "2025", label: "Diplômé" },
   { value: "∞", label: "Curiosité" },
+];
+
+const LANGUAGES = [
+  { name: "Malagasy", level: "Natif", percent: 100, accent: "#10b981" },
+  { name: "Français", level: "B2",    percent: 72,  accent: "#6366f1" },
+  { name: "Anglais",  level: "A2",    percent: 28,  accent: "#f59e0b" },
 ];
 
 export default function AboutSection() {
@@ -130,7 +135,7 @@ export default function AboutSection() {
         {/* ── Layout principal : texte + timeline ── */}
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
 
-          {/* Texte */}
+          {/* Texte + stats + langues */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -138,7 +143,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-base leading-relaxed mb-5" style={{ color: "#94a3b8" }}>
-              Jeune ingénieur de <strong style={{ color: "#e2e8f0" }}>24 ans</strong>, diplômé de
+              Ingénieur talentueux de <strong style={{ color: "#e2e8f0" }}>24 ans</strong>, diplômé de
               l'École Supérieure Polytechnique d'Antsiranana en{" "}
               <strong style={{ color: "#e2e8f0" }}>Sciences et Technologies de l'Information
               et de la Communication</strong>, parcours Télécommunications & Réseaux.
@@ -159,7 +164,7 @@ export default function AboutSection() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-3 mb-6">
               {STATS.map(({ value, label }) => (
                 <div
                   key={label}
@@ -185,7 +190,7 @@ export default function AboutSection() {
             </div>
 
             {/* Localisation + dispo */}
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-wrap gap-3 mb-8">
               <span
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
                 style={{
@@ -209,9 +214,61 @@ export default function AboutSection() {
                 Disponible : CDI / Freelance / Remote
               </span>
             </div>
+
+            {/* ── Langues ── */}
+            <div
+              className="rounded-2xl p-5"
+              style={{
+                background: "rgba(255,255,255,0.025)",
+                border: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
+              <p
+                className="text-xs font-bold uppercase tracking-[0.25em] mb-5"
+                style={{ color: "#475569" }}
+              >
+                Langues
+              </p>
+              <div className="space-y-4">
+                {LANGUAGES.map(({ name, level, percent, accent }) => (
+                  <div key={name}>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>
+                        {name}
+                      </span>
+                      <span
+                        className="text-xs font-bold px-2 py-0.5 rounded-full"
+                        style={{
+                          background: `${accent}20`,
+                          color: accent,
+                          border: `1px solid ${accent}33`,
+                        }}
+                      >
+                        {level}
+                      </span>
+                    </div>
+                    <div
+                      className="h-1.5 rounded-full overflow-hidden"
+                      style={{ background: "rgba(255,255,255,0.06)" }}
+                    >
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${percent}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+                        className="h-full rounded-full"
+                        style={{
+                          background: `linear-gradient(90deg, ${accent}, ${accent}88)`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Timeline parcours */}
+          {/* Timeline parcours académique */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -224,7 +281,7 @@ export default function AboutSection() {
               style={{ color: "#475569" }}
             >
               <GraduationCap size={14} />
-              Parcours
+              Parcours académique
             </p>
 
             <div className="relative pl-6">
@@ -243,7 +300,6 @@ export default function AboutSection() {
                   transition={{ delay: i * 0.12 }}
                   className="relative mb-8 last:mb-0"
                 >
-                  {/* Point sur la ligne */}
                   <div
                     className="absolute -left-[25px] top-1 w-3 h-3 rounded-full"
                     style={{
@@ -251,7 +307,6 @@ export default function AboutSection() {
                       boxShadow: "0 0 10px rgba(99,102,241,0.6)",
                     }}
                   />
-
                   <div
                     className="rounded-xl p-4"
                     style={{
@@ -284,7 +339,7 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* ── 4 piliers de compétences ── */}
+        {/* ── Piliers de compétences ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -297,7 +352,6 @@ export default function AboutSection() {
           >
             Mes expertises techniques
           </p>
-          {/* Ajustement du grid pour accueillir 7 éléments de façon fluide */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {PILLARS.map(({ Icon, label, desc, accent }, i) => (
               <motion.div

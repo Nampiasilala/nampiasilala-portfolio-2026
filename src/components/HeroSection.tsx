@@ -101,8 +101,8 @@ style={{
               style={{ width: "clamp(300px, 80vw, 224px)" }}
             >
               {[
-                { value: "7+",   label: "Projets" },
-                { value: "4",    label: "Domaines" },
+                { value: "9+",   label: "Projets" },
+                { value: "4+",    label: "Domaines" },
                 { value: "2025", label: "Diplômé" },
                 { value: "∞",    label: "Curiosité" },
               ].map(({ value, label }) => (
@@ -225,7 +225,7 @@ style={{
                 color: "#94a3b8",
               }}
             >
-              Ingénieur polyvalent formé à l’ESP Antsiranana, je crée des solutions techniques complètes, de l’électronique embarquée aux applications web modernes, en passant par le DevOps et la création digitale.
+              Ingénieur qualifié et polyvalent, spécialisé en Télécommuniations et Réseaux, mention Sciences et Technologies de l'Information et de la Communiation, Je crée des solutions techniques complètes, de l’électronique embarquée aux applications web modernes, en passant par le DevOps et la création digitale.
               Je transforme des idées complexes en produits simples, fiables et efficaces.
             </motion.p>
 

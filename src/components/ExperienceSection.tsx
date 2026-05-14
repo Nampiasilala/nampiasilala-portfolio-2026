@@ -6,20 +6,20 @@ const EXPERIENCES = [
   {
     year: "Nov 2025 - Présent",
     title: "Apprenti Ingénierie & Optimisation Core Network IN/VAS",
-    org: "Yas Madagascar",
-    desc: "Traitement de clients (APN Statique), support projet en tant que testeur, gestion des bases de données internes et suivi des capacités réseau[cite: 29, 31, 32, 33].",
+    org: "Yas Madagascar | Antananarivo",
+    desc: "Traitement de clients, APN, IPBX, support projet en tant que testeur, gestion des bases de données internes et suivi des capacités réseau.",
   },
   {
     year: "Sept 2024 - Déc 2024",
     title: "Stagiaire en Dev Full-Stack",
-    org: "SENDBAZAR Diego-Suarez",
-    desc: "Participation active au développement de services en ligne et collaboration avec l'équipe technique pour la mise en œuvre de nouvelles fonctionnalités[cite: 34, 35, 37, 38].",
+    org: "SENDBAZAR Diego-Suarez | Antsiranana",
+    desc: "Participation active au développement de services en ligne et collaboration avec l'équipe technique pour la mise en œuvre de nouvelles fonctionnalités.",
   },
   {
     year: "Nov 2023 - Jan 2024",
     title: "Stagiaire en Informatique",
-    org: "DRCC Alaotra-Mangoro",
-    desc: "Support informatique, gestion de données internes, administration de réseau local et assistance technique au centre TVM/RNM[cite: 39, 40, 41, 43, 44].",
+    org: "DRCC Alaotra-Mangoro | Ambatondrazaka",
+    desc: "Support informatique, gestion de données internes, administration de réseau local et assistance technique au centre TVM/RNM.",
   },
 ];
 
