@@ -103,7 +103,7 @@ const projets: Project[] = [
       "Interface de jeu interactive et animée",
     ],
     role: "Backend & Logic Developer",
-    year: "2023",
+    year: "2025",
     image: "/images/4.png",
     images: ["/images/4.png"],
     github: "https://github.com/Nampiasilala/projet_blackjack.git",
@@ -111,7 +111,7 @@ const projets: Project[] = [
     accent: "#f59e0b",
   },
   {
-    titre: "Outils Photovoltaïques",
+    titre: "Outil d'aide au dimensionnement d'une installation photovoltaïque domestique (WEB)",
     description:
       "Simulateur d'installation solaire avec calcul de production, proposition d'équipements et cartographie géographique.",
     longDescription:
@@ -125,15 +125,17 @@ const projets: Project[] = [
       "Déploiement Docker conteneurisé",
     ],
     role: "Fullstack Developer",
-    year: "2024",
+    year: "2025",
     image: "/images/5.png",
     images: ["/images/5.png"],
     github: "https://github.com/Nampiasilala/Outils-Photovoltaiques.git",
+    dockerHub: "https://hub.docker.com/u/nampiasilala",
+    driveVideo: "https://drive.google.com/drive/folders/1WQ2QhBzwN_LyimqLZbqBCv3J7P0dsx_A?usp=drive_link",
     modes: ["dev", "electronique"],
     accent: "#f59e0b",
   },
   {
-    titre: "Horloge & Calendrier Digital",
+    titre: "Horloge et Calendrier Digital avec Thermomètre",
     description: "Dispositif multifonctionnel affichant heure, date et température sur matrices LED avec gestion d'alarme.",
     longDescription: "Système complet basé sur un Arduino MEGA pilotant quatre matrices LED en série. Intègre un module RTC DS1307 pour la précision temporelle et un capteur DS18B20 pour la température ambiante. L'utilisateur peut configurer une alarme via un clavier matriciel et basculer entre différents modes d'affichage interactifs.",
     technologies: ["Arduino", "C++", "Capteurs RTC", "Matrices LED"],
@@ -145,14 +147,14 @@ const projets: Project[] = [
       "Alarme programmable intégrée",
     ],
     role: "Electronic Engineer",
-    year: "2023",
+    year: "2024",
     image: "/images/horloge-led.png",
     images: ["/images/HorlogeDigital/1.png", "/images/HorlogeDigital/2.jpg", "/images/HorlogeDigital/3.jpg", "/images/HorlogeDigital/4.png", "/images/HorlogeDigital/5.jpg", "/images/HorlogeDigital/6.jpg", "/images/HorlogeDigital/7.jpg", "/images/HorlogeDigital/8.jpg", "/images/HorlogeDigital/9.png"],
     modes: ["electronique"],
     accent: "#00979d",
   },
   {
-    titre: "Clé Numérique Infrarouge",
+    titre: "Clé Numérique Télécommandée par Infrarouge",
     description: "Système de contrôle d'accès sécurisé par télécommande infrarouge et commande de puissance pour gâche électrique.",
     longDescription: "Réalisation d'un dispositif de commande à distance sécurisé. Le projet couvre toute la chaîne de traitement : réception du signal IR, décodage hexadécimal par microcontrôleur, et pilotage d'une mini gâche de serrure électrique via un circuit de puissance (relais). Comprend une étude complète d'une alimentation stabilisée (Redressement, Filtrage, Régulation).",
     technologies: ["Arduino", "Infrarouge", "Electronique de puissance", "Relais"],
@@ -171,7 +173,7 @@ const projets: Project[] = [
     accent: "#e74c3c",
   },
   {
-    titre: "Outils PV Mobile",
+    titre: "Outil d'aide au dimensionnement d'une installation photovoltaïque domestique (Mobile)",
     description:
       "Application Flutter compagnon de l'outil photovoltaïque web — architecture propre, performance native.",
     longDescription:
@@ -184,15 +186,17 @@ const projets: Project[] = [
       "Navigation fluide et UX optimisée",
     ],
     role: "Mobile Developer",
-    year: "2024",
+    year: "2025",
     image: "/images/PV_mobile.png",
     images: ["/images/PV_mobile.png"],
     github: "https://github.com/Nampiasilala/App_mobile_flutter.git",
+    dockerHub: "https://hub.docker.com/u/nampiasilala",
+    driveVideo: "https://drive.google.com/drive/folders/1NqtMXbgOFUanfSQzWxSE5Memv3wr4Ogi?usp=drive_link",
     modes: ["dev"],
     accent: "#06b6d4",
   },
   {
-    titre: "Alumni Géolocalisation",
+    titre: "Système Web de Géolocalisation Sécurisée des Anciens Élèves avec Visualisation en Temps Réel",
     description:
       "Plateforme de mise en réseau des anciens étudiants avec carte interactive, recherche avancée et géolocalisation en temps réel.",
     longDescription:
