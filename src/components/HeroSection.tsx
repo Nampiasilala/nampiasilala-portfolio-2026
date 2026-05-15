@@ -1,6 +1,13 @@
 // src/components/HeroSection.tsx
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, ArrowDownRight, Sparkles } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  ArrowDownRight,
+  Sparkles,
+} from "lucide-react";
 
 const TAGS = [
   "Développement Fullstack",
@@ -18,13 +25,13 @@ export default function HeroSection() {
     <section
       id="accueil"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-style={{
-  backgroundImage: "url('/images/bg.png')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-}}
->
+      style={{
+        backgroundImage: "url('/images/bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Grille décorative */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -50,7 +57,6 @@ style={{
       {/* Conteneur — padding top élevé pour laisser place à la navbar fixe */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-20">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-
           {/* ══════════════════════════════════════════
               PHOTO — en premier sur mobile (order-first),
               à droite sur desktop (order-last)
@@ -66,11 +72,12 @@ style={{
               <div
                 className="overflow-hidden"
                 style={{
-                  width:  "clamp(140px, 38vw, 224px)",
+                  width: "clamp(140px, 38vw, 224px)",
                   height: "clamp(140px, 38vw, 224px)",
                   borderRadius: "20px",
                   border: "2px solid rgba(99,102,241,0.3)",
-                  boxShadow: "0 0 50px rgba(99,102,241,0.15), 0 16px 32px rgba(0,0,0,0.5)",
+                  boxShadow:
+                    "0 0 50px rgba(99,102,241,0.15), 0 16px 32px rgba(0,0,0,0.5)",
                 }}
               >
                 <img
@@ -101,10 +108,10 @@ style={{
               style={{ width: "clamp(300px, 80vw, 224px)" }}
             >
               {[
-                { value: "9+",   label: "Projets" },
-                { value: "4+",    label: "Domaines" },
+                { value: "9+", label: "Projets" },
+                { value: "4+", label: "Domaines" },
                 { value: "2025", label: "Diplômé" },
-                { value: "∞",    label: "Curiosité" },
+                { value: "∞", label: "Curiosité" },
               ].map(({ value, label }) => (
                 <div
                   key={label}
@@ -143,7 +150,6 @@ style={{
               TEXTE — centré sur mobile, aligné gauche desktop
           ══════════════════════════════════════════ */}
           <div className="flex-1 text-center lg:text-left w-full min-w-0">
-
             {/* Badge disponibilité */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -163,7 +169,13 @@ style={{
                 style={{ boxShadow: "0 0 8px #4ade80" }}
               />
               <Sparkles size={12} className="shrink-0" />
-              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <span
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 Disponible pour de nouvelles opportunités
               </span>
             </motion.div>
@@ -190,7 +202,7 @@ style={{
                 style={{
                   fontFamily: "'Syne', sans-serif",
                   // 14px min (pour les tout petits écrans), 4.5vw (croissance très lente), 36px max (pour ne pas dominer)
-                  fontSize: "clamp(14px, 4.5vw, 36px)", 
+                  fontSize: "clamp(14px, 4.5vw, 36px)",
                   letterSpacing: "-0.02em", // Réduit l'espace entre les lettres
                   color: "#94a3b8",
                   wordBreak: "break-word", // Force le passage à la ligne si vraiment nécessaire
@@ -225,8 +237,12 @@ style={{
                 color: "#94a3b8",
               }}
             >
-              Ingénieur qualifié et polyvalent, spécialisé en Télécommuniations et Réseaux, mention Sciences et Technologies de l'Information et de la Communiation, Je crée des solutions techniques complètes, de l’électronique embarquée aux applications web modernes, en passant par le DevOps et la création digitale.
-              Je transforme des idées complexes en produits simples, fiables et efficaces.
+              Ingénieur polyvalent spécialisé en Réseaux, Systèmes et
+              Développement. Je conçois des solutions techniques transversales,
+              allant de l'électronique embarquée aux applications web modernes,
+              en intégrant les pratiques DevOps et la création digitale. Mon
+              objectif : transformer des architectures complexes en produits
+              simples, fiables et performants.
             </motion.p>
 
             {/* Tags */}
@@ -303,9 +319,21 @@ style={{
               className="flex items-center gap-3 justify-center lg:justify-start flex-wrap"
             >
               {[
-                { href: "https://github.com/nampiasilala",      Icon: Github,   label: "GitHub" },
-                { href: "https://www.linkedin.com/in/nampiasilala-andriatankafatra-5793ba327/", Icon: Linkedin, label: "LinkedIn" },
-                { href: "mailto:nampiasilala@gmail.com",        Icon: Mail,     label: "Email" },
+                {
+                  href: "https://github.com/nampiasilala",
+                  Icon: Github,
+                  label: "GitHub",
+                },
+                {
+                  href: "https://www.linkedin.com/in/nampiasilala-andriatankafatra-5793ba327/",
+                  Icon: Linkedin,
+                  label: "LinkedIn",
+                },
+                {
+                  href: "mailto:nampiasilala@gmail.com",
+                  Icon: Mail,
+                  label: "Email",
+                },
               ].map(({ href, Icon, label }) => (
                 <a
                   key={label}
@@ -317,13 +345,13 @@ style={{
                     background: "rgba(255,255,255,0.04)",
                     color: "#94a3b8",
                   }}
-                  onMouseEnter={e => {
+                  onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLAnchorElement;
                     el.style.borderColor = "rgba(99,102,241,0.6)";
                     el.style.color = "#a5b4fc";
                     el.style.background = "rgba(99,102,241,0.12)";
                   }}
-                  onMouseLeave={e => {
+                  onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLAnchorElement;
                     el.style.borderColor = "rgba(255,255,255,0.1)";
                     el.style.color = "#94a3b8";
@@ -346,7 +374,6 @@ style={{
               </span>
             </motion.div>
           </div>
-
         </div>
       </div>
 
@@ -357,7 +384,10 @@ style={{
         className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
         style={{ color: "#334155" }}
       >
-        <span className="text-xs tracking-widest uppercase" style={{ fontSize: "10px" }}>
+        <span
+          className="text-xs tracking-widest uppercase"
+          style={{ fontSize: "10px" }}
+        >
           Scroll
         </span>
         <ArrowDownRight size={14} />

@@ -17,20 +17,20 @@ const TIMELINE = [
   {
     year: "2024 - 2025",
     title: "MASTER - STIC · Parcours Télécommunications et Réseaux",
-    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana | 201 - Antsiranana",
-    desc: "Spécialisation en télécommunications, réseaux, systèmes embarqués et développement logiciel avancé.",
+    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana",
+    desc: "Spécialisation en infrastructures réseaux, protocoles télécoms et optimisation mobile. Expertise approfondie en administration systèmes, sécurité et développement logiciel avancé.",
   },
   {
     year: "2022 - 2023",
     title: "LICENCE - GET · Parcours Électronique, Informatique et Technologie",
-    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana | 201 - Antsiranana",
-    desc: "Fondations solides en électronique analogique/numérique, programmation embarquée et systèmes.",
+    org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana",
+    desc: "Formation transversale en électronique analogique/numérique, systèmes embarqués et informatique. Acquisition des bases en administration réseaux et programmation de bas niveau.",
   },
   {
     year: "2018 - 2019",
     title: "BACCALAUREAT - Série C",
-    org: "Université de Toamasina | Lycée RANOHAVIMANANA Norbert | 503 - Ambatondrazaka",
-    desc: "Base scientifique solide, introduction à la physique, mathématiques et informatique.",
+    org: "Lycée RANOHAVIMANANA Norbert | Ambatondrazaka",
+    desc: "Formation scientifique d'excellence avec une spécialisation en mathématiques et physique, posant les bases du raisonnement logique et de l'ingénierie.",
   },
 ];
 
@@ -50,7 +50,7 @@ const PILLARS = [
   {
     Icon: Server,
     label: "DevOps",
-    desc: "Docker, pipelines CI/CD, déploiement Cloud.",
+    desc: "Docker & Conteneurisation, Pipelines CI/CD, Déploiement Cloud & Infrastructure.",
     accent: "#10b981",
   },
   {
@@ -62,7 +62,7 @@ const PILLARS = [
   {
     Icon: ShieldCheck,
     label: "Cybersécurité",
-    desc: "Audit de sécurité, réseaux, Kali Linux.",
+    desc: "Audit réseau, durcissement Linux (Kali) et sécurisation des déploiements applicatifs.",
     accent: "#ef4444",
   },
   {
@@ -88,8 +88,8 @@ const STATS = [
 
 const LANGUAGES = [
   { name: "Malagasy", level: "Natif", percent: 100, accent: "#10b981" },
-  { name: "Français", level: "B2",    percent: 72,  accent: "#6366f1" },
-  { name: "Anglais",  level: "A2",    percent: 28,  accent: "#f59e0b" },
+  { name: "Français", level: "B2", percent: 72, accent: "#6366f1" },
+  { name: "Anglais", level: "A2", percent: 28, accent: "#f59e0b" },
 ];
 
 export default function AboutSection() {
@@ -102,11 +102,13 @@ export default function AboutSection() {
       {/* Ligne déco verticale gauche */}
       <div
         className="absolute left-0 top-0 bottom-0 w-px opacity-20"
-        style={{ background: "linear-gradient(to bottom, transparent, #6366f1, transparent)" }}
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent, #6366f1, transparent)",
+        }}
       />
 
       <div className="max-w-6xl mx-auto px-6">
-
         {/* ── En-tête ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -128,13 +130,14 @@ export default function AboutSection() {
           </h2>
           <div
             className="mt-4 h-px w-16"
-            style={{ background: "linear-gradient(90deg, #6366f1, transparent)" }}
+            style={{
+              background: "linear-gradient(90deg, #6366f1, transparent)",
+            }}
           />
         </motion.div>
 
         {/* ── Layout principal : texte + timeline ── */}
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
-
           {/* Texte + stats + langues */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -142,25 +145,43 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-base leading-relaxed mb-5" style={{ color: "#94a3b8" }}>
-              Ingénieur talentueux de <strong style={{ color: "#e2e8f0" }}>24 ans</strong>, diplômé de
+            <p
+              className="text-base leading-relaxed mb-5"
+              style={{ color: "#94a3b8" }}
+            >
+              Ingénieur passionné de{" "}
+              <strong style={{ color: "#e2e8f0" }}>24 ans</strong>, diplômé de
               l'École Supérieure Polytechnique d'Antsiranana en{" "}
-              <strong style={{ color: "#e2e8f0" }}>Sciences et Technologies de l'Information
-              et de la Communication</strong>, parcours Télécommunications & Réseaux.
+              <strong style={{ color: "#e2e8f0" }}>
+                Télécommunications et Réseaux
+              </strong>. Mon expertise couvre l'intégralité du cycle
+              technique, des infrastructures réseaux critiques au développement
+              applicatif.
             </p>
-            <p className="text-base leading-relaxed mb-5" style={{ color: "#94a3b8" }}>
-              Ma particularité : je suis à l'aise aussi bien côté{" "}
-              <span style={{ color: "#60a5fa" }}>hardware</span> (électronique, systèmes embarqués,
-              conception PCB) que côté{" "}
-              <span style={{ color: "#818cf8" }}>software</span> (web, mobile, DevOps).
-              Cette double compétence me permet de concevoir des solutions techniques complètes,
-              de la carte électronique jusqu'au tableau de bord web.
+
+            <p
+              className="text-base leading-relaxed mb-5"
+              style={{ color: "#94a3b8" }}
+            >
+              Ma force réside dans ma polyvalence : je maîtrise aussi bien le{" "}
+              <span style={{ color: "#60a5fa" }}>hardware</span> (systèmes
+              embarqués, électronique de puissance, IoT) que le{" "}
+              <span style={{ color: "#818cf8" }}>software</span> (Full-Stack,
+              Mobile, DevOps). Cette approche globale me permet de
+              concevoir des solutions robustes, de la couche physique jusqu'au
+              déploiement Cloud.
             </p>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "#94a3b8" }}>
-              Curieux, autonome et orienté résultats, je m'engage dans chaque projet avec
-              la même exigence : <em style={{ color: "#e2e8f0" }}>du code propre, une UX soignée
-              et une livraison fiable</em>. Je suis actuellement ouvert à des opportunités
-              en CDI, freelance ou collaboration internationale.
+
+            <p
+              className="text-base leading-relaxed mb-8"
+              style={{ color: "#94a3b8" }}
+            >
+              Rigoureux et orienté résultats, je m'engage à fournir{" "}
+              <em style={{ color: "#e2e8f0" }}>
+                une architecture propre, une expérience utilisateur fluide et
+                des systèmes hautement disponibles
+              </em>. Je suis actuellement ouvert à des opportunités
+              en CDI, freelance ou projets à dimension internationale.
             </p>
 
             {/* Stats */}
@@ -184,7 +205,9 @@ export default function AboutSection() {
                   >
                     {value}
                   </p>
-                  <p className="text-xs mt-1" style={{ color: "#475569" }}>{label}</p>
+                  <p className="text-xs mt-1" style={{ color: "#475569" }}>
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -233,7 +256,10 @@ export default function AboutSection() {
                 {LANGUAGES.map(({ name, level, percent, accent }) => (
                   <div key={name}>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>
+                      <span
+                        className="text-sm font-semibold"
+                        style={{ color: "#e2e8f0" }}
+                      >
                         {name}
                       </span>
                       <span
@@ -255,7 +281,11 @@ export default function AboutSection() {
                         initial={{ width: 0 }}
                         whileInView={{ width: `${percent}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+                        transition={{
+                          duration: 0.9,
+                          ease: "easeOut",
+                          delay: 0.1,
+                        }}
                         className="h-full rounded-full"
                         style={{
                           background: `linear-gradient(90deg, ${accent}, ${accent}88)`,
@@ -288,7 +318,10 @@ export default function AboutSection() {
               {/* Ligne verticale */}
               <div
                 className="absolute left-0 top-0 bottom-0 w-px"
-                style={{ background: "linear-gradient(to bottom, #6366f1, transparent)" }}
+                style={{
+                  background:
+                    "linear-gradient(to bottom, #6366f1, transparent)",
+                }}
               />
 
               {TIMELINE.map((item, i) => (
@@ -323,13 +356,19 @@ export default function AboutSection() {
                     >
                       {item.year}
                     </span>
-                    <h4 className="font-bold text-sm mb-0.5" style={{ color: "#e2e8f0" }}>
+                    <h4
+                      className="font-bold text-sm mb-0.5"
+                      style={{ color: "#e2e8f0" }}
+                    >
                       {item.title}
                     </h4>
                     <p className="text-xs mb-2" style={{ color: "#6366f1" }}>
                       {item.org}
                     </p>
-                    <p className="text-xs leading-relaxed" style={{ color: "#64748b" }}>
+                    <p
+                      className="text-xs leading-relaxed"
+                      style={{ color: "#64748b" }}
+                    >
                       {item.desc}
                     </p>
                   </div>
@@ -365,12 +404,12 @@ export default function AboutSection() {
                   background: "rgba(255,255,255,0.025)",
                   border: "1px solid rgba(255,255,255,0.06)",
                 }}
-                onMouseEnter={e => {
+                onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = `${accent}44`;
                   el.style.background = `${accent}08`;
                 }}
-                onMouseLeave={e => {
+                onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "rgba(255,255,255,0.06)";
                   el.style.background = "rgba(255,255,255,0.025)";
@@ -382,17 +421,22 @@ export default function AboutSection() {
                 >
                   <Icon size={17} style={{ color: accent }} />
                 </div>
-                <p className="font-bold text-sm mb-1.5" style={{ color: "#e2e8f0" }}>
+                <p
+                  className="font-bold text-sm mb-1.5"
+                  style={{ color: "#e2e8f0" }}
+                >
                   {label}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: "#64748b" }}>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "#64748b" }}
+                >
                   {desc}
                 </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
       </div>
 
       <style>{`

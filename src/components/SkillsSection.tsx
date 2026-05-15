@@ -1,16 +1,16 @@
 // src/components/SkillsSection.tsx
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Code, 
-  Smartphone, 
-  Server, 
-  Cpu, 
-  Palette, 
+import {
+  Code,
+  Smartphone,
+  Server,
+  Cpu,
+  Palette,
   GitBranch,
   Terminal,
   ShieldCheck,
-  Wifi
+  Wifi,
 } from "lucide-react";
 import { useViewMode } from "../context/ViewModeContext";
 
@@ -67,14 +67,15 @@ const competences: Skill[] = [
     modes: ["dev"],
   },
   {
-    categorie: "DevOps",
+    categorie: "DevOps & Cloud",
     icon: <GitBranch size={18} />,
     accent: "#10b981",
-    description: "Conteneurisation, CI/CD, déploiement.",
+    description: "Automatisation, conteneurisation et déploiement continu.",
     technologies: [
-      { name: "Docker / Kubernetes", level: 2 },
-      { name: "Git / GitHub Actions", level: 4 },
-      { name: "Postman", level: 5 },
+      { name: "Docker / DockerHub", level: 3 },
+      { name: "GitHub Actions (CI/CD)", level: 4 },
+      { name: "Git / GitFlow", level: 3 },
+      { name: "Postman (API Testing)", level: 5 },
     ],
     modes: ["devops"],
   },
@@ -89,7 +90,6 @@ const competences: Skill[] = [
       { name: "Notions de script Bash", level: 2 },
       { name: "Gestion et configuration serveur", level: 3 },
       { name: "Administration système de base", level: 2 },
-
     ],
     modes: ["admin"],
   },
@@ -165,7 +165,7 @@ export default function SkillsSection() {
   const { viewMode } = useViewMode();
 
   const visible = competences.filter(
-    (c) => viewMode === "all" || c.modes.includes(viewMode)
+    (c) => viewMode === "all" || c.modes.includes(viewMode),
   );
 
   return (
@@ -181,13 +181,24 @@ export default function SkillsSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] mb-3" style={{ color: "#475569" }}>
+          <p
+            className="text-sm font-semibold uppercase tracking-[0.3em] mb-3"
+            style={{ color: "#475569" }}
+          >
             Stack technique
           </p>
-          <h2 className="text-2xl sm:text-3xl font-black" style={{ fontFamily: "'Syne', sans-serif", color: "#f1f5f9" }}>
+          <h2
+            className="text-2xl sm:text-3xl font-black"
+            style={{ fontFamily: "'Syne', sans-serif", color: "#f1f5f9" }}
+          >
             Compétences
           </h2>
-          <div className="mt-4 h-px w-16" style={{ background: "linear-gradient(90deg, #6366f1, transparent)" }} />
+          <div
+            className="mt-4 h-px w-16"
+            style={{
+              background: "linear-gradient(90deg, #6366f1, transparent)",
+            }}
+          />
         </motion.div>
 
         <AnimatePresence mode="wait">
@@ -211,31 +222,52 @@ export default function SkillsSection() {
                   background: "#0d1420",
                   border: "1px solid rgba(255,255,255,0.06)",
                 }}
-                onMouseEnter={e => {
+                onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = `${comp.accent}44`;
                   el.style.boxShadow = `0 8px 40px ${comp.accent}10`;
                 }}
-                onMouseLeave={e => {
+                onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "rgba(255,255,255,0.06)";
                   el.style.boxShadow = "none";
                 }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${comp.accent}18` }}>
+                  <div
+                    className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: `${comp.accent}18` }}
+                  >
                     <span style={{ color: comp.accent }}>{comp.icon}</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm" style={{ color: "#e2e8f0" }}>{comp.categorie}</h3>
-                    <p className="text-xs" style={{ color: "#475569" }}>{comp.description}</p>
+                    <h3
+                      className="font-bold text-sm"
+                      style={{ color: "#e2e8f0" }}
+                    >
+                      {comp.categorie}
+                    </h3>
+                    <p className="text-xs" style={{ color: "#475569" }}>
+                      {comp.description}
+                    </p>
                   </div>
                 </div>
-                <div className="h-px w-full" style={{ background: "rgba(255,255,255,0.05)" }} />
+                <div
+                  className="h-px w-full"
+                  style={{ background: "rgba(255,255,255,0.05)" }}
+                />
                 <div className="flex flex-col gap-3">
                   {comp.technologies.map((tech) => (
-                    <div key={tech.name} className="flex items-center justify-between gap-3">
-                      <span className="text-xs font-medium" style={{ color: "#94a3b8" }}>{tech.name}</span>
+                    <div
+                      key={tech.name}
+                      className="flex items-center justify-between gap-3"
+                    >
+                      <span
+                        className="text-xs font-medium"
+                        style={{ color: "#94a3b8" }}
+                      >
+                        {tech.name}
+                      </span>
                       <LevelDots level={tech.level} accent={comp.accent} />
                     </div>
                   ))}
@@ -246,7 +278,9 @@ export default function SkillsSection() {
         </AnimatePresence>
 
         {visible.length === 0 && (
-          <p className="text-center mt-8 text-sm" style={{ color: "#334155" }}>Aucune compétence pour cette catégorie.</p>
+          <p className="text-center mt-8 text-sm" style={{ color: "#334155" }}>
+            Aucune compétence pour cette catégorie.
+          </p>
         )}
       </div>
     </section>

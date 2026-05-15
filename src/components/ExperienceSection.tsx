@@ -7,19 +7,19 @@ const EXPERIENCES = [
     year: "Nov 2025 - Présent",
     title: "Apprenti Ingénierie & Optimisation Core Network IN/VAS",
     org: "Yas Madagascar | Antananarivo",
-    desc: "Traitement de clients, APN, IPBX, support projet en tant que testeur, gestion des bases de données internes et suivi des capacités réseau.",
+    desc: "Supervision et optimisation des performances du cœur de réseau (Core Network). Gestion des configurations clients (APN, IPBX, DI), diagnostic d'incidents data et suivi des capacités d'infrastructure. Support technique aux phases de validation et mise à jour des bases de données internes.",
   },
   {
     year: "Sept 2024 - Déc 2024",
     title: "Stagiaire en Dev Full-Stack",
     org: "SENDBAZAR Diego-Suarez | Antsiranana",
-    desc: "Participation active au développement de services en ligne et collaboration avec l'équipe technique pour la mise en œuvre de nouvelles fonctionnalités.",
+    desc: "Développement et maintenance d'applications web modernes. Mise en œuvre de nouvelles fonctionnalités en collaboration étroite avec l'équipe technique et participation aux phases de test et validation. Utilisation de Git pour le versioning et l'organisation du workflow de développement.",
   },
   {
     year: "Nov 2023 - Jan 2024",
     title: "Stagiaire en Informatique",
     org: "DRCC Alaotra-Mangoro | Ambatondrazaka",
-    desc: "Support informatique, gestion de données internes, administration de réseau local et assistance technique au centre TVM/RNM.",
+    desc: "Assistance technique et support informatique aux utilisateurs. Initiation à l'administration de réseaux locaux et appui opérationnel aux techniciens du centre technique TVM/RNM.",
   },
 ];
 
@@ -27,12 +27,12 @@ const ENGAGEMENTS = [
   {
     year: "2022 – 2023",
     role: "Président de l'Association GAONA",
-    org: "Université d'Antsiranana | GAONA - Groupement et Association des Étudiants Originaires et Natifs d'Alaotra-Mangoro",
-    location: "201 - Antsiranana",
+    org: "Université d'Antsiranana | Groupement des Étudiants d'Alaotra-Mangoro",
+    location: "Antsiranana",
     bullets: [
-      "Coordination des activités associatives et planification des événements étudiants.",
-      "Liaison et collaboration avec les responsables de l'Université d'Antsiranana.",
-      "Gestion d'équipe et organisation d'événements fédérateurs.",
+      "Leadership et coordination globale des activités associatives.",
+      "Liaison stratégique et négociation avec les instances universitaires.",
+      "Gestion d'équipe, planification budgétaire et organisation d'événements d'envergure.",
     ],
     accent: "#8b5cf6",
   },
@@ -40,29 +40,29 @@ const ENGAGEMENTS = [
 
 const TRAININGS = [
   {
-    title: "Diplôme d'Études en Langue Française - DEFL B2",
+    title: "Diplôme d'Études en Langue Française - DELF B2",
     org: "Alliance Française d'Antsiranana",
     dates: "2025",
     accent: "#6366f1",
   },
   {
-    title: "Diplôme d'Études en Langue Française - DEFL B1",
+    title: "Diplôme d'Études en Langue Française - DELF B1",
     org: "Alliance Française d'Antsiranana",
     dates: "2022",
     accent: "#6366f1",
   },
   {
-    title: "Attestation Développement Personnel des Jeunes Leaders",
+    title: "Leadership & Développement Personnel",
     org: "Jeunes Parlementaires Diana",
     dates: "2022",
-    detail: "Thème : « Est-ce que je me connais, comment les autres me connaissent ? »",
+    detail: "Formation certifiante sur l'intelligence émotionnelle et le leadership de groupe.",
     accent: "#ec4899",
   },
   {
-    title: "Attestation Informatique",
+    title: "Certification Bureautique",
     org: "Conseil Communal de la Jeunesse Antsiranana I",
     dates: "2021",
-    detail: "Formation spécialisée Microsoft Word & PowerPoint",
+    detail: "Maîtrise avancée des outils de productivité et de communication.",
     accent: "#10b981",
   },
 ];

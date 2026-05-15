@@ -51,7 +51,7 @@ export default function Footer() {
               Nampiasilala
             </a>
             <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
-              Ingénieur STIC - Hardware & Software.
+              Ingénieur en Réseaux, Systèmes et Développement.
               <br />
               Basé à Antananarivo, disponible en remote.
             </p>
