@@ -75,7 +75,7 @@ export default function HeroSection() {
                   width: "clamp(140px, 38vw, 224px)",
                   height: "clamp(140px, 38vw, 224px)",
                   borderRadius: "300px",
-                  border: "10px solid rgba(99,102,241,0.3)",
+                  border: "5px solid rgba(99,102,241,0.3)",
                   boxShadow:
                     "0 0 50px rgba(99,102,241,0.15), 0 16px 32px rgba(0,0,0,0.5)",
                 }}
