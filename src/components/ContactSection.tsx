@@ -257,12 +257,12 @@ export default function ContactSection() {
                 {/* Nom */}
                 <div>
                   <label className="block text-xs font-semibold mb-1.5 uppercase tracking-widest" style={{ color: "#475569" }}>
-                    Votre nom
+                    Votre nom / organisation
                   </label>
                   <input
                     type="text"
                     name="name"
-                    placeholder="RAKOTONDRABE Jean"
+                    placeholder="RAKOTONDRABE / NASA SOCIETY"
                     value={form.name}
                     onChange={handleChange}
                     required

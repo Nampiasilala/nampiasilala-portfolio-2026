@@ -74,14 +74,14 @@ export default function HeroSection() {
                 style={{
                   width: "clamp(140px, 38vw, 224px)",
                   height: "clamp(140px, 38vw, 224px)",
-                  borderRadius: "20px",
-                  border: "2px solid rgba(99,102,241,0.3)",
+                  borderRadius: "300px",
+                  border: "10px solid rgba(99,102,241,0.3)",
                   boxShadow:
                     "0 0 50px rgba(99,102,241,0.15), 0 16px 32px rgba(0,0,0,0.5)",
                 }}
               >
                 <img
-                  src="/images/1.jpg"
+                  src="/images/111.png"
                   alt="Nampiasilala Andriatankafatra"
                   className="object-cover w-full h-full"
                 />
