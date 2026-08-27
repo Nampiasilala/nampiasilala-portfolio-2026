@@ -18,19 +18,19 @@ const TIMELINE = [
     year: "2024 - 2025",
     title: "MASTER - STIC · Parcours Télécommunications et Réseaux",
     org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana",
-    desc: "Spécialisation en infrastructures réseaux, protocoles télécoms et optimisation mobile. Expertise approfondie en administration systèmes, sécurité et développement logiciel avancé.",
+    desc: "Formation spécialisée en réseaux et télécommunications, couvrant l’architecture et l’administration des infrastructures réseau, les protocoles et technologies des réseaux mobiles, ainsi que les principes d’optimisation et de supervision des réseaux. Approfondissement des compétences en administration systèmes Linux, sécurité informatique, développement logiciel et automatisation, avec une approche orientée conception, déploiement et analyse de solutions techniques.",
   },
   {
     year: "2022 - 2023",
     title: "LICENCE - GET · Parcours Électronique, Informatique et Technologie",
     org: "Université d'Antsiranana | École Supérieure Polytechnique d'Antsiranana",
-    desc: "Formation transversale en électronique analogique/numérique, systèmes embarqués et informatique. Acquisition des bases en administration réseaux et programmation de bas niveau.",
+    desc: "Formation pluridisciplinaire combinant électronique analogique et numérique, informatique, systèmes embarqués et réseaux. Acquisition de bases solides en programmation, architecture des systèmes informatiques, administration réseau et traitement de l’information, ainsi qu’en conception et mise en œuvre de solutions électroniques et informatiques.",
   },
   {
     year: "2018 - 2019",
     title: "BACCALAUREAT - Série C",
     org: "Lycée RANOHAVIMANANA Norbert | Ambatondrazaka",
-    desc: "Formation scientifique d'excellence avec une spécialisation en mathématiques et physique, posant les bases du raisonnement logique et de l'ingénierie.",
+    desc: "Formation scientifique axée sur les mathématiques, la physique et les sciences, développant les capacités de raisonnement logique, d’analyse et de résolution de problèmes. Cette formation constitue le socle scientifique ayant conduit à une spécialisation progressive dans les domaines de l’informatique, des réseaux et des télécommunications",
   },
 ];
 
@@ -80,7 +80,7 @@ const PILLARS = [
 ];
 
 const STATS = [
-  { value: "9+", label: "Projets livrés" },
+  { value: "9+", label: "Projets" },
   { value: "4+", label: "Domaines" },
   { value: "2025", label: "Diplômé" },
   { value: "∞", label: "Curiosité" },
@@ -88,8 +88,8 @@ const STATS = [
 
 const LANGUAGES = [
   { name: "Malagasy", level: "Natif", percent: 100, accent: "#10b981" },
-  { name: "Français", level: "B2", percent: 72, accent: "#6366f1" },
-  { name: "Anglais", level: "A2", percent: 28, accent: "#f59e0b" },
+  { name: "Français", level: "DELF B2", percent: 60, accent: "#6366f1" },
+  { name: "Anglais", level: "Niveau professionnel", percent: 50, accent: "#f59e0b" },
 ];
 
 export default function AboutSection() {

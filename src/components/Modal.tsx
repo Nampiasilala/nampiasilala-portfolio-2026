@@ -39,7 +39,7 @@ export default function Modal({ children, onClose }: ModalProps) {
           animate={{ y: 0, opacity: 1, scale: 1 }}
           exit={{ y: 60, opacity: 0, scale: 0.98 }}
           transition={{ type: "spring", stiffness: 320, damping: 32 }}
-          className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] overflow-y-auto"
+          className="relative w-full sm:max-w-6xl max-h-[92vh] sm:max-h-[85vh] overflow-y-auto"
           style={{
             background: "#0d1420",
             border: "1px solid rgba(255,255,255,0.08)",

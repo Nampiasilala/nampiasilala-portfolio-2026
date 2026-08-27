@@ -1,16 +1,16 @@
 // src/components/Navbar.tsx
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ChevronDown, 
-  Code2, 
-  Cpu, 
-  GitBranch, 
-  Terminal, 
-  ShieldCheck, 
-  Wifi, 
-  Palette, 
-  Layers 
+import {
+  ChevronDown,
+  Code2,
+  Cpu,
+  GitBranch,
+  Terminal,
+  ShieldCheck,
+  Wifi,
+  Palette,
+  Layers,
 } from "lucide-react";
 import { useViewMode } from "../context/ViewModeContext";
 import type { ViewMode } from "../types/viewMode";
@@ -21,35 +21,62 @@ interface NavbarProps {
 }
 
 // Mise à jour des options pour refléter vos 7 domaines spécifiques
-const VIEW_OPTIONS: { value: ViewMode; label: string; icon: React.ReactNode }[] = [
-  { value: "all",           label: "Tout afficher",           icon: <Layers size={13} /> },
-  { value: "dev",           label: "Développement Fullstack", icon: <Code2 size={13} /> },
-  { value: "electronique",  label: "Électronique",            icon: <Cpu size={13} /> },
-  { value: "devops",        label: "DevOps",                  icon: <GitBranch size={13} /> },
-  { value: "admin",         label: "Administration système",  icon: <Terminal size={13} /> },
-  { value: "cyber",         label: "Cybersécurité",           icon: <ShieldCheck size={13} /> },
-  { value: "reseaux",       label: "Réseaux et Télécoms",     icon: <Wifi size={13} /> },
-  { value: "digital",       label: "Création digitale",       icon: <Palette size={13} /> },
+const VIEW_OPTIONS: {
+  value: ViewMode;
+  label: string;
+  icon: React.ReactNode;
+}[] = [
+  { value: "all", label: "Tout afficher", icon: <Layers size={13} /> },
+  { value: "dev", label: "Développement Fullstack", icon: <Code2 size={13} /> },
+  { value: "electronique", label: "Électronique", icon: <Cpu size={13} /> },
+  { value: "devops", label: "DevOps", icon: <GitBranch size={13} /> },
+  {
+    value: "admin",
+    label: "Administration système",
+    icon: <Terminal size={13} />,
+  },
+  { value: "cyber", label: "Cybersécurité", icon: <ShieldCheck size={13} /> },
+  { value: "reseaux", label: "Réseaux et Télécoms", icon: <Wifi size={13} /> },
+  { value: "digital", label: "Création digitale", icon: <Palette size={13} /> },
 ];
 
 const NAV_ITEMS = [
-  { id: "accueil",     label: "Accueil" },
-  { id: "apropos",     label: "À propos" },
-  { id: "experience",  label: "Expérience" },
+  { id: "accueil", label: "Accueil" },
+  { id: "apropos", label: "À propos" },
+  { id: "experience", label: "Expérience" },
   { id: "competences", label: "Compétences" },
-  { id: "projets",     label: "Projets" },
-  { id: "contact",     label: "Contact" },
+  { id: "projets", label: "Projets" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
   const { viewMode, setViewMode } = useViewMode();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentOption = VIEW_OPTIONS.find((o) => o.value === viewMode) || VIEW_OPTIONS[0];
+  const currentOption =
+    VIEW_OPTIONS.find((o) => o.value === viewMode) || VIEW_OPTIONS[0];
 
   const navBg = isScrolled ? "rgba(10,10,15,0.88)" : "transparent";
-  const navBorder = isScrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent";
+  const navBorder = isScrolled
+    ? "1px solid rgba(255,255,255,0.06)"
+    : "1px solid transparent";
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
 
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <nav
       className="fixed top-0 w-full z-50 transition-all duration-400"
@@ -61,15 +88,14 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 gap-4">
-          
           <motion.a
             href="#accueil"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="shrink-0 block hover:opacity-80 transition-opacity"
           >
-            <img 
-              src="/logo.png" 
+            <img
+              src="/logo.png"
               alt="Logo Nampi"
               className="w-10 h-10 rounded-full object-cover border border-slate-700"
             />
@@ -91,7 +117,10 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
                     <motion.div
                       layoutId="nav-active"
                       className="absolute inset-0 rounded-lg"
-                      style={{ background: "rgba(99,102,241,0.1)", border: "1px solid rgba(99,102,241,0.2)" }}
+                      style={{
+                        background: "rgba(99,102,241,0.1)",
+                        border: "1px solid rgba(99,102,241,0.2)",
+                      }}
                     />
                   )}
                 </a>
@@ -100,7 +129,7 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
           </div>
 
           {/* Sélecteur de vue */}
-          <div className="relative shrink-0">
+          <div ref={dropdownRef} className="relative shrink-0">
             <button
               onClick={() => setDropdownOpen((prev) => !prev)}
               className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200"
@@ -112,7 +141,10 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
             >
               <span style={{ color: "#818cf8" }}>{currentOption.icon}</span>
               <span className="hidden sm:inline">{currentOption.label}</span>
-              <ChevronDown size={13} className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                size={13}
+                className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             <AnimatePresence>
@@ -133,14 +165,21 @@ export default function Navbar({ activeSection, isScrolled }: NavbarProps) {
                     return (
                       <button
                         key={opt.value}
-                        onClick={() => { setViewMode(opt.value); setDropdownOpen(false); }}
+                        onClick={() => {
+                          setViewMode(opt.value);
+                          setDropdownOpen(false);
+                        }}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm transition-all duration-150"
                         style={{
-                          background: isSelected ? "rgba(99,102,241,0.12)" : "transparent",
+                          background: isSelected
+                            ? "rgba(99,102,241,0.12)"
+                            : "transparent",
                           color: isSelected ? "#a5b4fc" : "#64748b",
                         }}
                       >
-                        <span style={{ color: isSelected ? "#818cf8" : "#475569" }}>
+                        <span
+                          style={{ color: isSelected ? "#818cf8" : "#475569" }}
+                        >
                           {opt.icon}
                         </span>
                         {opt.label}

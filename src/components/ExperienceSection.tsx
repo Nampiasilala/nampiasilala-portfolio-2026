@@ -30,9 +30,8 @@ const ENGAGEMENTS = [
     org: "Université d'Antsiranana | Groupement des Étudiants d'Alaotra-Mangoro",
     location: "Antsiranana",
     bullets: [
-      "Leadership et coordination globale des activités associatives.",
-      "Liaison stratégique et négociation avec les instances universitaires.",
-      "Gestion d'équipe, planification budgétaire et organisation d'événements d'envergure.",
+      "Direction des activités de l’association, avec développement des compétences en communication, leadership et prise de décision.",
+      "Représentation des étudiants auprès des instances universitaires et participation à la défense de leurs intérêts.",
     ],
     accent: "#8b5cf6",
   },
